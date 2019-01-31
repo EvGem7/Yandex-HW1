@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Drachuk Eugene\'s App</string>
+    <string name="info">Drachuk Eugene</string>\
+    <string name="html_github_link">&lt;a href=%s>My GitHub account&lt;/a> </string>
+    <string name="github_link">https://github.com/EvGem7</string>
 </resources>
