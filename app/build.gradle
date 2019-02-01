@@ -11,6 +11,14 @@ apply plugin: 'io.fabric'
 //apply plugin: 'checkstyle'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'myalias'
+            keyPassword 'evg20000311'
+            storePassword 'evg20000311'
+            storeFile file('../keystore/android.jks')
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "org.evgem.android.drachukeugenesapp"
@@ -24,6 +32,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
