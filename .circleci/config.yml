@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    parallelism: 3
+#    parallelism: 3
     working_directory: ~/code
     docker:
       - image: circleci/android:api-28-alpha
@@ -24,6 +24,9 @@ jobs:
       - run:
           name: Run Tests
           command: ./gradlew lint test
+      - run:
+          name: Run ktlint
+          command: ./gradlew ktlint
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/build/reports
           destination: reports
