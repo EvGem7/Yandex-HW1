@@ -41,7 +41,7 @@ jobs:
       - store_artifacts:
           path: app/build/outputs/apk
           destination: release
-      - depoy:
+      - deploy:
           name: Deploy APK
           command: |
             if [ "${CIRCLE_BRANCH}" != "master" ]; then
