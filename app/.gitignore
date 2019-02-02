@@ -1,5 +1,5 @@
 # built application files
-*.apk
+#*.apk
 *.aab
 *.ap_
 
@@ -13,7 +13,7 @@
 *.class
 
 # generated files
-release/**
+# release/**
 bin/**
 gen/**
 out/**
