@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-#    parallelism: 3
+#    parallelism: 4
     working_directory: ~/code
     docker:
       - image: circleci/android:api-28-alpha
@@ -35,4 +35,35 @@ jobs:
           destination: reports
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: app/build/test-results
-      # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+      - run:
+          name: Build
+          command: ./gradlew assembleRelease
+      - store_artifacts:
+          path: app/build/outputs/apk
+          destination: release
+      - deploy:
+          name: Deploy APK to Fabric (master)
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ./gradlew crashlyticsUploadDistributionRelease
+            fi
+      - deploy:
+          name: Deploy APK to AppCenter (dev)
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "dev" ]; then
+              token=5ffc75bb7b5ea73ff3f77d9d7c0e239ae04f9bfa
+              owner=EvGem
+              app=Drachuk-Eugenes-App
+              group="Drachuk Eugene's Group"
+
+              json=$(curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "X-API-Token: $token" "https://api.appcenter.ms/v0.1/apps/$owner/$app/release_uploads")
+              upload_id=$(echo $json | cut -d \" -f4)
+              upload_url=$(echo $json | cut -d \" -f8)
+              curl -F "ipa=@app/build/outputs/apk/release/app-release.apk" $upload_url
+
+              json=$(curl -X PATCH --header 'Content-Type: application/json' --header 'Accept: application/json' --header "X-API-Token: $token" -d '{ "status": "committed"  }' "https://api.appcenter.ms/v0.1/apps/$owner/$app/release_uploads/$upload_id")
+              release_url=$(echo $json | cut -d \" -f8)
+              curl -X PATCH --header 'Content-Type: application/json' --header 'Accept: application/json' --header "X-API-Token: $token" -d "{ \"destination_name\": \"$group\", \"release_notes\": \"This is dev branch\" }" "https://api.appcenter.ms/$release_url"
+            fi
+
+
