@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
-    <ImageView
-        android:id="@+id/my_head_image_view"
+    <org.evgem.android.drachukeugenesapp.ui.custom.CircularImageView
+        android:id="@+id/welcome_image"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
         android:src="@drawable/my_head_photo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +27,7 @@
         android:text="@string/info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/my_head_image_view"
+        app:layout_constraintStart_toEndOf="@+id/welcome_image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.17000002" />
 
@@ -40,7 +39,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/my_head_image_view"
+        app:layout_constraintStart_toEndOf="@+id/welcome_image"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:text="@string/github_link" />
 </android.support.constraint.ConstraintLayout>

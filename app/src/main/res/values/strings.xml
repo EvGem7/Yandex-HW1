@@ -3,4 +3,7 @@
     <string name="info">Drachuk Eugene</string>\
     <string name="html_github_link">&lt;a href=%s>My GitHub account&lt;/a> </string>
     <string name="github_link">https://github.com/EvGem7</string>
+    <string name="welcome_text">Welcome, dude</string>
+    <string name="next_button">Next</string>
+    <string name="app_description">This is my super launcher!</string>
 </resources>
