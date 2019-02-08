@@ -15,6 +15,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:text="@string/next_button"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="@dimen/margins"
+        android:layout_marginEnd="@dimen/margins"
         style="@style/Widget.AppCompat.Button.Colored"/>
 </RelativeLayout>

@@ -6,8 +6,8 @@
 
     <org.evgem.android.drachukeugenesapp.ui.custom.CircularImageView
         android:id="@+id/welcome_image"
-        android:layout_width="168dp"
-        android:layout_height="168dp"
+        android:layout_width="@dimen/picture_diameter"
+        android:layout_height="@dimen/picture_diameter"
         tools:src="@drawable/my_head_photo"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@id/welcome_header"/>
@@ -16,17 +16,17 @@
         android:id="@+id/welcome_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="@dimen/header_text"
         tools:text="@string/app_name"
         android:layout_centerInParent="true"
-        android:layout_margin="16dp"/>
+        android:layout_margin="@dimen/margins"/>
     <TextView
         android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="@dimen/common_text"
         android:layout_below="@id/welcome_header"
         android:layout_toEndOf="@id/welcome_image"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/margins"
         tools:text="@string/welcome_text" />
 </RelativeLayout>
