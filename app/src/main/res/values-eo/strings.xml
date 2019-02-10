@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">App de Drachuk Eugene</string>
+    <string name="info">Drachuk Eugene</string>\
+    <string name="html_github_link">&lt;a href=%s>Mia GitHub konto&lt;/a> </string>
+    <string name="github_link">https://github.com/EvGem7</string>
+    <string name="welcome_text">Bonvenon</string>
+    <string name="next_button">Tuj poste</string>
+    <string name="app_description">Ĉi tiu estas mia super launcher!</string>
+    <string name="light_theme">Lumo temo</string>
+    <string name="dark_theme">Malluma temo</string>
+    <string name="standard_layout">Norma aranĝo</string>
+    <string name="tight_layout">Densa aranĝo</string>
+    <string name="standard_layout_description">Portreto: 4 ikonoj en vico\nPejzaĝo: 6 ikonoj en vico</string>
+    <string name="tight_layout_description">Portreto: 5 ikonoj en vico\nPejzaĝo: 7 ikonoj en vico</string>
+</resources>

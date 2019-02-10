@@ -13,7 +13,7 @@
         android:layout_marginTop="@dimen/margins"
         android:layout_marginEnd="@dimen/margins"
         android:layout_weight="1"
-        android:background="@drawable/border">
+        android:background="@drawable/shape_border">
 
         <RadioButton
             android:id="@+id/standard_radio"
@@ -55,7 +55,7 @@
         android:layout_height="0dp"
         android:layout_margin="@dimen/margins"
         android:layout_weight="1"
-        android:background="@drawable/border">
+        android:background="@drawable/shape_border">
 
         <RadioButton
             android:id="@+id/tight_radio"

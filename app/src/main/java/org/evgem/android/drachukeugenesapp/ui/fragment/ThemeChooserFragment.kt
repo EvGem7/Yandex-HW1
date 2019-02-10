@@ -50,7 +50,7 @@ class ThemeChooserFragment : BaseChooserFragment() {
 
         val orientation = activity?.resources?.configuration?.orientation
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            darkSideBackground.background = activity?.getDrawable(R.drawable.border)
+            darkSideBackground.background = activity?.getDrawable(R.drawable.shape_border)
         } else if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             darkSideBackground.background = ColorDrawable(Color.TRANSPARENT)
         }
@@ -59,7 +59,7 @@ class ThemeChooserFragment : BaseChooserFragment() {
     private fun darkSideOnClick(view: View?) {
         chooser = true
         setChooserState()
-        darkSideBackground.background = activity?.getDrawable(R.drawable.choosed_dark_border)
+        darkSideBackground.background = activity?.getDrawable(R.drawable.shape_choosed_dark_border)
     }
 
     private fun setChooserState() {

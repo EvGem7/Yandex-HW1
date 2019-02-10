@@ -11,7 +11,7 @@
         android:layout_marginTop="@dimen/margins"
         android:layout_marginBottom="@dimen/margins"
         android:layout_weight="1"
-        android:background="@drawable/border">
+        android:background="@drawable/shape_border">
 
         <RadioButton
             android:id="@+id/light_side_radio"
@@ -29,7 +29,7 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margins"
         android:layout_weight="1"
-        android:background="@drawable/border">
+        android:background="@drawable/shape_border">
 
         <RadioButton
             android:id="@+id/dark_side_radio"

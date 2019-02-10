@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Drachuk Eugeneのアプリ</string>
+    <string name="info">Drachuk Eugene</string>\
+    <string name="html_github_link">&lt;a href=%s>私のGitHubアカウント&lt;/a> </string>
+    <string name="github_link">https://github.com/EvGem7</string>
+    <string name="welcome_text">ようこそ</string>
+    <string name="next_button">次</string>
+    <string name="app_description">これは私のスーパーランチャーです！</string>
+    <string name="light_theme">軽いテーマ</string>
+    <string name="dark_theme">暗いテーマ</string>
+    <string name="standard_layout">標準レイアウト</string>
+    <string name="tight_layout">タイトなレイアウト</string>
+    <string name="standard_layout_description">縦：4列に並ぶ\n風景：一列に6つのアイコン</string>
+    <string name="tight_layout_description">縦：5列に並ぶ\n風景：一列に7つのアイコン</string>
+</resources>

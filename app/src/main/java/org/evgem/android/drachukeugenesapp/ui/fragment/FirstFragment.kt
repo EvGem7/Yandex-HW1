@@ -33,7 +33,7 @@ sealed class FirstFragment : Fragment() {
 class WelcomeFragment : FirstFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         block = {
-            welcomeImage.setImageResource(R.drawable.my_head_photo)
+            welcomeImage.setImageResource(R.drawable.image_my_head)
             welcomeHeader.setText(R.string.app_name)
             welcomeText.setText(R.string.welcome_text)
         }

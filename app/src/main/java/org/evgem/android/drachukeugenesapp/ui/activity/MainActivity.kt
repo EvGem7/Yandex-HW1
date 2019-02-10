@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        TODO("refactor. setOnLongClickListener on imageView")
+
         githubLinkTextView = findViewById(R.id.github_link_text_view)
         githubLinkTextView.text = if (Build.VERSION.SDK_INT < 24) {
             Html.fromHtml(htmlGithubLink)

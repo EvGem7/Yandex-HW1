@@ -17,7 +17,6 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
         setContentView(R.layout.activity_welcome)
 
         fragment_container?.adapter = welcomePagerAdapter

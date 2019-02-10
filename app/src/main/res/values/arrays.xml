@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_topics">
+        <item>Brunch this weekend?</item>
+        <item>Summer BBQ</item>
+        <item>Oui Oui</item>
+    </string-array>
+    <string-array name="list_messages">
+        <item>message one</item>
+        <item>message two</item>
+        <item>message three</item>
+    </string-array>
+</resources>
