@@ -9,6 +9,7 @@ import com.microsoft.appcenter.crashes.Crashes
 import io.fabric.sdk.android.Fabric
 
 class App : Application() {
+    //TODO("в качестве иконки приложения использовать иконку из вашего профиля")
     override fun onCreate() {
         super.onCreate()
         Fabric.with(this, Crashlytics())

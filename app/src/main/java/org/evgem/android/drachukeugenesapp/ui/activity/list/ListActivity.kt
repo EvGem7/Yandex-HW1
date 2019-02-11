@@ -19,6 +19,7 @@ class ListActivity : AppCompatActivity() {
     private var itemCount = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        TODO("transform it to fragment")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 

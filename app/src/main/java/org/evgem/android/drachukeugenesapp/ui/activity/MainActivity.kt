@@ -9,14 +9,14 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Html
 import android.widget.TextView
 import org.evgem.android.drachukeugenesapp.R
+import org.evgem.android.drachukeugenesapp.ui.activity.welcome.WelcomeActivity
+import org.evgem.android.drachukeugenesapp.ui.custom.CircularImageView
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        TODO("refactor. setOnLongClickListener on imageView")
 
         githubLinkTextView = findViewById(R.id.github_link_text_view)
         githubLinkTextView.text = if (Build.VERSION.SDK_INT < 24) {
@@ -33,10 +33,19 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        myHeadImageView = findViewById(R.id.my_head_image)
+        myHeadImageView.setOnLongClickListener {
+            val intent = Intent(this, WelcomeActivity::class.java)
+            startActivity(intent)
+            return@setOnLongClickListener true
+        }
+
     }
 
     private val githubLink: String get() = getString(R.string.github_link)
     private val htmlGithubLink: String get() = getString(R.string.html_github_link, githubLink)
 
     private lateinit var githubLinkTextView: TextView
+    private lateinit var myHeadImageView: CircularImageView
 }

@@ -4,9 +4,10 @@ package org.evgem.android.drachukeugenesapp.ui.activity.welcome
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_welcome.*
+import android.widget.Button
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.activity.launcher.LauncherActivity
+import org.evgem.android.drachukeugenesapp.ui.custom.NonSwipeableViewPager
 
 class WelcomeActivity : AppCompatActivity() {
     companion object {
@@ -15,20 +16,25 @@ class WelcomeActivity : AppCompatActivity() {
     private var currentFragment = 0
     private val welcomePagerAdapter = WelcomePagerAdapter(supportFragmentManager)
 
+    private lateinit var fragmentContainer: NonSwipeableViewPager
+    private lateinit var nextButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        fragment_container?.adapter = welcomePagerAdapter
+        fragmentContainer = findViewById(R.id.fragment_container)
+        fragmentContainer.adapter = welcomePagerAdapter
 
-        next_button?.setOnClickListener {
+        nextButton = findViewById(R.id.next_button)
+        nextButton.setOnClickListener {
             ++currentFragment
             if (currentFragment < welcomePagerAdapter.count) {
-                fragment_container?.currentItem = currentFragment
+                fragmentContainer.currentItem = currentFragment
             } else {
-                startActivity(
-                    Intent(this@WelcomeActivity, LauncherActivity::class.java)
-                )
+                val intent = Intent(this@WelcomeActivity, LauncherActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }

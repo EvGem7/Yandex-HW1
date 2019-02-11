@@ -2,6 +2,7 @@ package org.evgem.android.drachukeugenesapp.ui.activity.launcher
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -15,12 +16,15 @@ class LauncherActivity : AppCompatActivity() {
     companion object {
         private const val KEY_ITEM_COUNT = "item count"
     }
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: LauncherRecyclerAdapter
+    private lateinit var fab: FloatingActionButton
 
     private var itemCount: Int = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        TODO("transform it to fragment")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launcher)
         setSupportActionBar(toolbar)
@@ -40,6 +44,16 @@ class LauncherActivity : AppCompatActivity() {
 
         val offset = resources?.getDimensionPixelOffset(R.dimen.recycler_decoration_offset) ?: 0
         recyclerView.addItemDecoration(OffsetItemDecoration(offset))
+        recyclerView.itemAnimator = LauncherRecyclerItemAnimator(offset)
+
+        fab = findViewById(R.id.fab)
+        fab.setOnClickListener {
+            val scrollOffset = recyclerView.computeVerticalScrollOffset()
+            adapter.insert(0)
+            itemCount = adapter.itemCount
+            val layoutManager = recyclerView.layoutManager as GridLayoutManager
+            layoutManager.scrollToPositionWithOffset(0, -scrollOffset)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {

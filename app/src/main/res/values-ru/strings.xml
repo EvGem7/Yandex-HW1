@@ -12,4 +12,6 @@
     <string name="tight_layout">Плотный макет</string>
     <string name="standard_layout_description">Портретная: 4 иконки в ряд\nЛандшафтная: 6 иконок в ряд</string>
     <string name="tight_layout_description">Портретная: 5 иконок в ряд\nЛандшафтная: 7 иконок в ряд</string>
+    <string name="color_snackbar">Цвет: %s</string>
+    <string name="delete_action">Удалить</string>
 </resources>
