@@ -1,5 +1,6 @@
 package org.evgem.android.drachukeugenesapp.util
 
-import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.RecyclerView.Adapter
+import android.support.v7.widget.RecyclerView.ViewHolder
 
-val <VH : RecyclerView.ViewHolder>RecyclerView.Adapter<VH>.lastIndex: Int get() = this.itemCount - 1
+val <VH : ViewHolder>Adapter<VH>.lastIndex: Int get() = this.itemCount - 1

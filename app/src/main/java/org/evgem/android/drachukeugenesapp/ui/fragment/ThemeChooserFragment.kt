@@ -15,7 +15,6 @@ import org.evgem.android.drachukeugenesapp.AppConfig.Theme.DARK
 import org.evgem.android.drachukeugenesapp.AppConfig.Theme.LIGHT
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.base.BaseChooserFragment
-import org.evgem.android.drachukeugenesapp.util.defaultSharedPreferences
 
 class ThemeChooserFragment : BaseChooserFragment() {
 
@@ -39,33 +38,20 @@ class ThemeChooserFragment : BaseChooserFragment() {
         darkSideRadioButton = view.findViewById(R.id.dark_side_radio)
         darkSideBackground = view.findViewById(R.id.dark_side_background)
 
-        update()
-        if (chooser) {
-            darkSideOnClick(null)
-        }
+        updateUI()
 
-        lightSideBackground.setOnClickListener(this::lightSideOnClick)
-        darkSideBackground.setOnClickListener(this::darkSideOnClick)
+        lightSideBackground.setOnClickListener {
+            chooser = false
+            updateUI()
+            updateTheme()
+        }
+        darkSideBackground.setOnClickListener {
+            chooser = true
+            updateUI()
+            updateTheme()
+        }
 
         return view
-    }
-
-    private fun lightSideOnClick(view: View?) {
-        chooser = false
-        update()
-
-        val orientation = activity?.resources?.configuration?.orientation
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            darkSideBackground.background = activity?.getDrawable(R.drawable.shape_border)
-        } else if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            darkSideBackground.background = ColorDrawable(Color.TRANSPARENT)
-        }
-    }
-
-    private fun darkSideOnClick(view: View?) {
-        chooser = true
-        update()
-        darkSideBackground.background = activity?.getDrawable(R.drawable.shape_choosed_dark_border)
     }
 
     private fun getChooserState() = if (chooser) DARK else LIGHT
@@ -74,10 +60,13 @@ class ThemeChooserFragment : BaseChooserFragment() {
         chooser = layout == DARK
     }
 
-    private fun update() {
+    private fun updateUI() {
         darkSideRadioButton.isChecked = chooser
         lightSideRadioButton.isChecked = !chooser
+    }
 
+    private fun updateTheme() {
         AppConfig.setTheme(getChooserState(), context)
+        activity?.recreate()
     }
 }

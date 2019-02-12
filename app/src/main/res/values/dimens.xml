@@ -9,4 +9,5 @@
     <dimen name="layout_chooser_description">16sp</dimen>
     <dimen name="recycler_decoration_offset">8dp</dimen>
     <dimen name="list_picture_diameter">54dp</dimen>
+    <dimen name="status_bar_height">24dp</dimen>
 </resources>

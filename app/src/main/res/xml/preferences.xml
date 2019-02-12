@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreferenceCompat
+        android:key="dark_theme_picker"
+        android:title="@string/dark_theme" />
+
+    <SwitchPreferenceCompat
+        android:key="tight_layout_picker"
+        android:title="@string/tight_layout" />
+
+    <CheckBoxPreference
+        android:key="run_welcome_activity_checkbox"
+        android:title="@string/settings_reconfigure_title"
+        android:summary="@string/settings_reconfigure_summary"/>
+</android.support.v7.preference.PreferenceScreen>

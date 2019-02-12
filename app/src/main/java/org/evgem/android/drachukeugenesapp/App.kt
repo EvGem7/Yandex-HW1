@@ -14,6 +14,6 @@ class App : Application() {
         super.onCreate()
         Fabric.with(this, Crashlytics())
         AppCenter.start(this, "4adf0dd6-adf5-41bc-a15b-620487358d07", Analytics::class.java, Crashes::class.java)
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        AppConfig.setTheme(AppConfig.getTheme(this), this)
     }
 }

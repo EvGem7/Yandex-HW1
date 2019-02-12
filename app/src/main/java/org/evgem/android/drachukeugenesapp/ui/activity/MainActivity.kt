@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Html
 import android.widget.TextView
+import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.activity.welcome.WelcomeActivity
 import org.evgem.android.drachukeugenesapp.ui.custom.CircularImageView
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         myHeadImageView = findViewById(R.id.my_head_image)
         myHeadImageView.setOnLongClickListener {
+            AppConfig.setConfigured(false, this)
             val intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
             return@setOnLongClickListener true
