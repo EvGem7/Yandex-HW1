@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimaryDark"
     android:orientation="vertical">
     <org.evgem.android.drachukeugenesapp.ui.custom.CircularImageView
+        android:id="@+id/header_avatar"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:src="@drawable/avatar"
@@ -16,8 +16,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/info"
-        android:textColor="@android:color/darker_gray"
         android:layout_marginBottom="@dimen/margins"
         android:layout_marginStart="@dimen/margins"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/backgroundGray" />
 
 </LinearLayout>

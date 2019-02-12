@@ -1,23 +1,16 @@
-package org.evgem.android.drachukeugenesapp.ui.activity.launcher
+package org.evgem.android.drachukeugenesapp.ui.base
 
-import android.graphics.drawable.ColorDrawable
-import android.support.design.widget.BaseTransientBottomBar
-import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.Snackbar
-import android.support.design.widget.Snackbar.Callback.*
-import android.support.design.widget.SwipeDismissBehavior
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import org.evgem.android.drachukeugenesapp.R
+import org.evgem.android.drachukeugenesapp.ui.custom.Deleting
 import org.evgem.android.drachukeugenesapp.util.TAG
 import org.evgem.android.drachukeugenesapp.util.colorToString
 
-class LauncherRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(color: Int, adapter: LauncherRecyclerAdapter) {
-        itemView.background = ColorDrawable(color)
-
+open class SnackbarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    open fun bindSnackbar(color: Int, adapter: Deleting) {
         itemView.setOnLongClickListener {
             val snackbarText = itemView.context.resources.getString(R.string.color_snackbar, colorToString(color))
             Snackbar.make(itemView, snackbarText, 5000)

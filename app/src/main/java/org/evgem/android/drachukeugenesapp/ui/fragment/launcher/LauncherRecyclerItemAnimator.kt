@@ -1,4 +1,4 @@
-package org.evgem.android.drachukeugenesapp.ui.activity.launcher
+package org.evgem.android.drachukeugenesapp.ui.fragment.launcher
 
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.RecyclerView

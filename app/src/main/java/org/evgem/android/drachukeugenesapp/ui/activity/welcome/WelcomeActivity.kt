@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import org.evgem.android.drachukeugenesapp.R
-import org.evgem.android.drachukeugenesapp.ui.activity.launcher.LauncherActivity
+import org.evgem.android.drachukeugenesapp.ui.activity.NavigationActivity
 import org.evgem.android.drachukeugenesapp.ui.custom.NonSwipeableViewPager
 
 class WelcomeActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        fragmentContainer = findViewById(R.id.fragment_container)
+        fragmentContainer = findViewById(R.id.welcome_fragment_container)
         fragmentContainer.adapter = welcomePagerAdapter
 
         nextButton = findViewById(R.id.next_button)
@@ -32,7 +32,8 @@ class WelcomeActivity : AppCompatActivity() {
             if (currentFragment < welcomePagerAdapter.count) {
                 fragmentContainer.currentItem = currentFragment
             } else {
-                val intent = Intent(this@WelcomeActivity, LauncherActivity::class.java)
+                val intent = Intent(this@WelcomeActivity, NavigationActivity::class.java)
+                intent.putExtra(NavigationActivity.EXTRA_FRAGMENT_TYPE, NavigationActivity.LAUNCHER_FRAGMENT)
                 startActivity(intent)
                 finish()
             }

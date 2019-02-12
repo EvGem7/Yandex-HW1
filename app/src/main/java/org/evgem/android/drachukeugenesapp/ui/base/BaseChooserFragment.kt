@@ -7,9 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 
 open class BaseChooserFragment : Fragment() {
-    companion object {
-        private const val KEY_CHOOSER = "chooser"
-    }
     protected var chooser = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,5 +16,9 @@ open class BaseChooserFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putBoolean(KEY_CHOOSER, chooser)
+    }
+
+    companion object {
+        private const val KEY_CHOOSER = "chooser"
     }
 }
