@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <org.evgem.android.drachukeugenesapp.ui.custom.NonSwipeableViewPager
+    <android.support.v4.view.ViewPager
         android:id="@+id/welcome_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

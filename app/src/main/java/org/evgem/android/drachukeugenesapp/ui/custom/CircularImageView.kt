@@ -12,6 +12,8 @@ import org.evgem.android.drachukeugenesapp.R
 import java.lang.Math.pow
 import java.lang.Math.sqrt
 
+//this code is stolen
+//TODO разобраться
 class CircularImageView(context: Context, attributeSet: AttributeSet? = null) : ImageView(context, attributeSet) {
     private var bitmapShader: BitmapShader? = null
     private val shaderMatrix: Matrix = Matrix()

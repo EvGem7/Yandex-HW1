@@ -2,9 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:baselineAligned="false"
     android:orientation="horizontal">
+
     <FrameLayout
         android:id="@+id/light_side_background"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/margins"
@@ -19,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
+            android:paddingStart="@dimen/margins"
             android:text="@string/light_theme"
             android:textSize="@dimen/theme_chooser_text" />
     </FrameLayout>
@@ -37,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
+            android:paddingStart="@dimen/margins"
             android:text="@string/dark_theme"
             android:textSize="@dimen/theme_chooser_text" />
     </FrameLayout>

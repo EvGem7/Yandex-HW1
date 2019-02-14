@@ -1,25 +1,15 @@
 package org.evgem.android.drachukeugenesapp.ui.fragment.list
 
-import android.graphics.drawable.GradientDrawable
+import android.content.pm.ApplicationInfo
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.TextView
-import org.evgem.android.drachukeugenesapp.R
-import org.evgem.android.drachukeugenesapp.ui.base.SnackbarViewHolder
-import org.evgem.android.drachukeugenesapp.ui.custom.Deleting
+import org.evgem.android.drachukeugenesapp.ui.base.ApplicationRecyclerViewHolder
 
-class ListRecyclerViewHolder(itemView: View) : SnackbarViewHolder(itemView) {
-    fun bind(color: Int, topic:String, shortMessage: String, adapter: Deleting) {
-        val picture: View = itemView.findViewById(R.id.list_picture)
-        val topicTextView: TextView = itemView.findViewById(R.id.topic)
-        val shortMessageTextView: TextView = itemView.findViewById(R.id.short_message)
-
-        picture.background = GradientDrawable().apply {
-            setColor(color)
-            shape = GradientDrawable.OVAL
-        }
-        topicTextView.text = topic
-        shortMessageTextView.text = shortMessage
-
-        bindSnackbar(color, adapter)
+class ListRecyclerViewHolder(itemView: View) : ApplicationRecyclerViewHolder(itemView) {
+    override fun bind(icon: Drawable?, name: CharSequence) {
+        val appView = itemView as TextView
+        appView.setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null)
+        appView.text = name
     }
 }

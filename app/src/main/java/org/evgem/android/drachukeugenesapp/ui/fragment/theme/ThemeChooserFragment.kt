@@ -1,4 +1,4 @@
-package org.evgem.android.drachukeugenesapp.ui.fragment
+package org.evgem.android.drachukeugenesapp.ui.fragment.theme
 
 
 import android.content.res.Configuration
@@ -17,7 +17,6 @@ import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.base.BaseChooserFragment
 
 class ThemeChooserFragment : BaseChooserFragment() {
-
     private lateinit var lightSideRadioButton: RadioButton
     private lateinit var lightSideBackground: FrameLayout
 
@@ -67,6 +66,7 @@ class ThemeChooserFragment : BaseChooserFragment() {
 
     private fun updateTheme() {
         AppConfig.setTheme(getChooserState(), context)
+        (activity as? OnThemeChangedListener)?.onThemeChanged(getChooserState())
         activity?.recreate()
     }
 }

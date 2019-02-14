@@ -12,8 +12,8 @@ object AppConfig {
     private const val KEY_LAYOUT = "layout"
     private const val KEY_IS_CONFIGURED = "is_configured"
 
-    enum class Theme(val value: Int) {
-        LIGHT(0), DARK(1)
+    enum class Theme {
+        LIGHT, DARK
     }
 
     enum class Layout(val portraitIconAmount: Int, val landscapeIconAmount: Int) {
@@ -61,5 +61,4 @@ object AppConfig {
             ?.putEnum(KEY_LAYOUT, layout)
             ?.apply()
     }
-
 }

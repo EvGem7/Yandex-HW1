@@ -14,8 +14,8 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/list_fab"
-            style="@style/fab" />
+        <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/list_fab"-->
+            <!--style="@style/fab" />-->
     </FrameLayout>
 </android.support.design.widget.CoordinatorLayout>

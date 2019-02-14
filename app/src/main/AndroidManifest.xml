@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activity.MainActivity">
-
-        </activity>
         <activity android:name=".ui.activity.welcome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.NavigationActivity"
-            android:theme="@style/AppTheme.TransparentStatusBar">
+            android:theme="@style/AppTheme.TransparentStatusBar"
+            android:launchMode="singleTask">
         </activity>
     </application>
 

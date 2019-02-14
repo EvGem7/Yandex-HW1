@@ -12,29 +12,29 @@ import org.evgem.android.drachukeugenesapp.AppConfig.Theme.LIGHT
 import org.evgem.android.drachukeugenesapp.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
-    private lateinit var darkThemePicker: SwitchPreferenceCompat
-    private lateinit var tightLayoutPicker: SwitchPreferenceCompat
+    private lateinit var darkThemeSwitch: SwitchPreferenceCompat
+    private lateinit var tightLayoutSwitch: SwitchPreferenceCompat
     private lateinit var runWelcomeActivityCheckBox: CheckBoxPreference
 
     override fun onCreatePreferences(savedState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
-        darkThemePicker = findPreference("dark_theme_picker") as SwitchPreferenceCompat
-        tightLayoutPicker = findPreference("tight_layout_picker") as SwitchPreferenceCompat
+        darkThemeSwitch = findPreference("dark_theme_picker") as SwitchPreferenceCompat
+        tightLayoutSwitch = findPreference("tight_layout_picker") as SwitchPreferenceCompat
         runWelcomeActivityCheckBox = findPreference("run_welcome_activity_checkbox") as CheckBoxPreference
 
-        darkThemePicker.isChecked = AppConfig.getTheme(context) == DARK
-        tightLayoutPicker.isChecked = AppConfig.getLayout(context) == TIGHT
+        darkThemeSwitch.isChecked = AppConfig.getTheme(context) == DARK
+        tightLayoutSwitch.isChecked = AppConfig.getLayout(context) == TIGHT
         runWelcomeActivityCheckBox.isChecked = !AppConfig.isConfigured(context)
 
-        darkThemePicker.setOnPreferenceClickListener {
-            val theme = if (darkThemePicker.isChecked) DARK else LIGHT
+        darkThemeSwitch.setOnPreferenceClickListener {
+            val theme = if (darkThemeSwitch.isChecked) DARK else LIGHT
             AppConfig.setTheme(theme, context)
             activity?.recreate()
             return@setOnPreferenceClickListener true
         }
-        tightLayoutPicker.setOnPreferenceClickListener {
-            val layout = if (tightLayoutPicker.isChecked) TIGHT else STANDARD
+        tightLayoutSwitch.setOnPreferenceClickListener {
+            val layout = if (tightLayoutSwitch.isChecked) TIGHT else STANDARD
             AppConfig.setLayout(layout, context)
             return@setOnPreferenceClickListener true
         }

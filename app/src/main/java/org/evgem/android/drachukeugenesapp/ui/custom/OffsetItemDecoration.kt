@@ -1,4 +1,4 @@
-package org.evgem.android.drachukeugenesapp.util
+package org.evgem.android.drachukeugenesapp.ui.custom
 
 import android.graphics.Rect
 import android.support.v7.widget.RecyclerView

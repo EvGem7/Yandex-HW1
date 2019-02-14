@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.FrameLayout
 import org.evgem.android.drachukeugenesapp.R
+import org.evgem.android.drachukeugenesapp.ui.activity.welcome.WelcomeActivity
 import org.evgem.android.drachukeugenesapp.ui.custom.CircularImageView
 import org.evgem.android.drachukeugenesapp.ui.fragment.SettingsFragment
 import org.evgem.android.drachukeugenesapp.ui.fragment.launcher.LauncherFragment
@@ -53,34 +54,23 @@ class NavigationActivity : AppCompatActivity() {
 
         avatarImageView = navigationView.getHeaderView(0).findViewById(R.id.header_avatar)
         avatarImageView.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, WelcomeActivity::class.java)
+                .putExtra(WelcomeActivity.EXTRA_SHOW_ONCE, true)
             startActivity(intent)
         }
     }
 
     private fun setFragment(fragmentType: Int) {
         fun performTransaction(fragment: Fragment) {
-            //TODO doesn't work properly. or works???
             val currentFragment = supportFragmentManager.findFragmentById(R.id.navigation_fragment_container)
             if (currentFragment == null) {
                 supportFragmentManager.beginTransaction()
-                    .add(R.id.navigation_fragment_container, fragment, fragment.TAG)
+                    .add(R.id.navigation_fragment_container, fragment)
                     .commit()
             } else {
-                val toInsertFragment = supportFragmentManager.findFragmentByTag(fragment.TAG)
-                if (toInsertFragment == null) {
-                    supportFragmentManager.beginTransaction()
-                        .detach(currentFragment)
-                        .add(R.id.navigation_fragment_container, fragment, fragment.TAG)
-                        .commit()
-                    return
-                }
-                if (toInsertFragment.TAG != currentFragment.TAG) {
-                    supportFragmentManager.beginTransaction()
-                        .detach(currentFragment)
-                        .attach(toInsertFragment)
-                        .commit()
-                }
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.navigation_fragment_container, fragment)
+                    .commit()
             }
         }
 
