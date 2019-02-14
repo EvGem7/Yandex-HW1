@@ -9,11 +9,11 @@ import android.widget.Button
 import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.activity.NavigationActivity
-import org.evgem.android.drachukeugenesapp.ui.fragment.theme.OnThemeChangedListener
+import org.evgem.android.drachukeugenesapp.ui.custom.OnConfigurationChangedListener
 
-class WelcomeActivity : AppCompatActivity(), OnThemeChangedListener {
+class WelcomeActivity : AppCompatActivity(), OnConfigurationChangedListener {
     private var currentFragment = 0
-    private var themeChanged = false
+    private var configurationChanged = false
     private val welcomePagerAdapter = WelcomePagerAdapter(supportFragmentManager)
 
     private lateinit var fragmentContainer: ViewPager
@@ -54,14 +54,14 @@ class WelcomeActivity : AppCompatActivity(), OnThemeChangedListener {
         }
     }
 
-    override fun onThemeChanged(theme: AppConfig.Theme) {
-        themeChanged = true
+    override fun onConfigurationChanged() {
+        configurationChanged = true
     }
 
     private fun startNavigationActivity() {
         val intent = Intent(this, NavigationActivity::class.java)
             .putExtra(NavigationActivity.EXTRA_FRAGMENT_TYPE, NavigationActivity.LAUNCHER_FRAGMENT)
-        if (themeChanged) {
+        if (configurationChanged) {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         }
         startActivity(intent)
@@ -70,7 +70,7 @@ class WelcomeActivity : AppCompatActivity(), OnThemeChangedListener {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        if (themeChanged) {
+        if (configurationChanged) {
             startNavigationActivity()
         }
     }
@@ -78,13 +78,13 @@ class WelcomeActivity : AppCompatActivity(), OnThemeChangedListener {
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
         outState?.putInt(KEY_CURRENT_FRAGMENT, currentFragment)
-        outState?.putBoolean(KEY_THEME_CHANGED, themeChanged)
+        outState?.putBoolean(KEY_THEME_CHANGED, configurationChanged)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
         currentFragment = savedInstanceState?.getInt(KEY_CURRENT_FRAGMENT) ?: 0
-        themeChanged = savedInstanceState?.getBoolean(KEY_THEME_CHANGED) ?: false
+        configurationChanged = savedInstanceState?.getBoolean(KEY_THEME_CHANGED) ?: false
     }
 
     companion object {

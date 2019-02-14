@@ -19,9 +19,9 @@ import org.evgem.android.drachukeugenesapp.util.TAG
 class NavigationActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_FRAGMENT_TYPE = "org.evgem.android.drachukeugenesapp.ui.activity.fragment_type"
-        const val LAUNCHER_FRAGMENT = 0
-        const val LIST_FRAGMENT = 1
-        const val SETTINGS_FRAGMENT = 2
+        const val LAUNCHER_FRAGMENT = 1
+        const val LIST_FRAGMENT = 2
+        const val SETTINGS_FRAGMENT = 3
     }
 
     private lateinit var fragmentContainer: FrameLayout

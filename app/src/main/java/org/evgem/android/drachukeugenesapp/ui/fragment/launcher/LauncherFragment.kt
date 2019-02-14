@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
+import org.evgem.android.drachukeugenesapp.ui.configuration.LauncherConfigurationHasher
+import org.evgem.android.drachukeugenesapp.ui.activity.NavigationActivity
 import org.evgem.android.drachukeugenesapp.ui.custom.OffsetItemDecoration
 
 class LauncherFragment : Fragment() {
@@ -40,7 +42,13 @@ class LauncherFragment : Fragment() {
         }
         recyclerView.layoutManager = GridLayoutManager(context, spanCount)
 
-        recyclerView.adapter = LauncherRecyclerAdapter()
+        recyclerView.adapter =
+                LauncherRecyclerAdapter(
+                    LauncherConfigurationHasher(
+                        context,
+                        NavigationActivity.LAUNCHER_FRAGMENT
+                    )
+                )
 
         val offset = resources.getDimensionPixelOffset(R.dimen.recycler_decoration_offset)
         recyclerView.addItemDecoration(OffsetItemDecoration(offset))

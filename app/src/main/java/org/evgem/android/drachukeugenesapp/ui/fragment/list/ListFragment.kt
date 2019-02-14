@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.evgem.android.drachukeugenesapp.R
+import org.evgem.android.drachukeugenesapp.ui.configuration.LauncherConfigurationHasher
+import org.evgem.android.drachukeugenesapp.ui.activity.NavigationActivity
 import org.evgem.android.drachukeugenesapp.ui.custom.OffsetItemDecoration
 
 class ListFragment : Fragment() {
@@ -20,7 +22,12 @@ class ListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
-        adapter = ListRecyclerAdapter()
+        adapter = ListRecyclerAdapter(
+            LauncherConfigurationHasher(
+                context,
+                NavigationActivity.LIST_FRAGMENT
+            )
+        )
 
         recyclerView = view.findViewById(R.id.recycler)
         recyclerView.adapter = adapter

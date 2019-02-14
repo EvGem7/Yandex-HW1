@@ -1,9 +1,6 @@
-package org.evgem.android.drachukeugenesapp.ui.fragment.theme
+package org.evgem.android.drachukeugenesapp.ui.fragment
 
 
-import android.content.res.Configuration
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +12,7 @@ import org.evgem.android.drachukeugenesapp.AppConfig.Theme.DARK
 import org.evgem.android.drachukeugenesapp.AppConfig.Theme.LIGHT
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.base.BaseChooserFragment
+import org.evgem.android.drachukeugenesapp.ui.custom.OnConfigurationChangedListener
 
 class ThemeChooserFragment : BaseChooserFragment() {
     private lateinit var lightSideRadioButton: RadioButton
@@ -66,7 +64,7 @@ class ThemeChooserFragment : BaseChooserFragment() {
 
     private fun updateTheme() {
         AppConfig.setTheme(getChooserState(), context)
-        (activity as? OnThemeChangedListener)?.onThemeChanged(getChooserState())
+        (activity as? OnConfigurationChangedListener)?.onConfigurationChanged()
         activity?.recreate()
     }
 }

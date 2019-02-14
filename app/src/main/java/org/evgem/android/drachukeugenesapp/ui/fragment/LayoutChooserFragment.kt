@@ -11,6 +11,7 @@ import org.evgem.android.drachukeugenesapp.AppConfig.Layout.STANDARD
 import org.evgem.android.drachukeugenesapp.AppConfig.Layout.TIGHT
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.base.BaseChooserFragment
+import org.evgem.android.drachukeugenesapp.ui.custom.OnConfigurationChangedListener
 
 class LayoutChooserFragment : BaseChooserFragment() {
     private lateinit var standardRadioButton: RadioButton
@@ -58,5 +59,6 @@ class LayoutChooserFragment : BaseChooserFragment() {
         tightRadioButton.isChecked = chooser
 
         AppConfig.setLayout(getChooserState(), context)
+        (activity as? OnConfigurationChangedListener)?.onConfigurationChanged()
     }
 }
