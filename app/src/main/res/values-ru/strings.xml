@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Приложение Драчука Евгения</string>
     <string name="info">Драчук Евгений</string>\
-    <string name="html_github_link">&lt;a href=%s>Мой аккаунт Github&lt;/a> </string>
     <string name="github_link">https://github.com/EvGem7</string>
     <string name="welcome_text">Дарова</string>
     <string name="next_button">Далее</string>
@@ -10,8 +9,13 @@
     <string name="dark_theme">Тёмная тема</string>
     <string name="standard_layout">Стандартный макет</string>
     <string name="tight_layout">Плотный макет</string>
-    <string name="standard_layout_description">Портретная: 4 иконки в ряд\nЛандшафтная: 6 иконок в ряд</string>
+    <string name="standard_layout_description">Портретная: 4 иконки в ряд Ландшафтная: 6 иконок в ряд</string>
     <string name="tight_layout_description">Портретная: 5 иконок в ряд\nЛандшафтная: 7 иконок в ряд</string>
     <string name="color_snackbar">Цвет: %s</string>
     <string name="delete_action">Удалить</string>
+    <string name="menu_grid">Сетка</string>
+    <string name="settings_reconfigure_summary">Запустить страницу приветствия при следующем запуске</string>
+    <string name="settings_reconfigure_title">Перенастроить</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_list">Список</string>
 </resources>

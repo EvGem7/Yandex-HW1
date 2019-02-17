@@ -2,8 +2,15 @@ package org.evgem.android.drachukeugenesapp.ui.base
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import org.evgem.android.drachukeugenesapp.entity.Application
+import android.widget.Toast
+import org.evgem.android.drachukeugenesapp.data.database.LaunchRepository
+import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
 
 abstract class ApplicationRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    abstract fun bind(application: Application)
+    open fun bind(appEntity: AppEntity) {
+        itemView.setOnClickListener {
+            it.context.startActivity(appEntity.launchIntent)
+            LaunchRepository.dao.incrementLaunch(appEntity.packageName)
+        }
+    }
 }

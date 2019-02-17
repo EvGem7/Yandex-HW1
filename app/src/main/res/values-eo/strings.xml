@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">App de Drachuk Eugene</string>
     <string name="info">Drachuk Eugene</string>\
-    <string name="html_github_link">&lt;a href=%s>Mia GitHub konto&lt;/a> </string>
     <string name="github_link">https://github.com/EvGem7</string>
     <string name="welcome_text">Bonvenon</string>
     <string name="next_button">Tuj poste</string>
@@ -14,4 +13,9 @@
     <string name="tight_layout_description">Portreto: 5 ikonoj en vico\nPejzaĝo: 7 ikonoj en vico</string>
     <string name="color_snackbar">Koloro: %s</string>
     <string name="delete_action">Forigi</string>
+    <string name="menu_grid">Krado</string>
+    <string name="settings_reconfigure_summary">Komenci la bonvena # pa? o la sekvanta tempo vi komencas ĝin</string>
+    <string name="settings_reconfigure_title">Reconfigure</string>
+    <string name="menu_settings">Agordoj</string>
+    <string name="menu_list">Listo</string>
 </resources>

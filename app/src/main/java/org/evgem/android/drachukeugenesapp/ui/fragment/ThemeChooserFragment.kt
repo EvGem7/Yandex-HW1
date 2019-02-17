@@ -21,11 +21,6 @@ class ThemeChooserFragment : BaseChooserFragment() {
     private lateinit var darkSideRadioButton: RadioButton
     private lateinit var darkSideBackground: FrameLayout
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setChooserState(AppConfig.getTheme(context))
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_theme_chooser, container, false)
 
@@ -35,6 +30,7 @@ class ThemeChooserFragment : BaseChooserFragment() {
         darkSideRadioButton = view.findViewById(R.id.dark_side_radio)
         darkSideBackground = view.findViewById(R.id.dark_side_background)
 
+        setChooserState(AppConfig.getTheme(context))
         updateUI()
 
         lightSideBackground.setOnClickListener {

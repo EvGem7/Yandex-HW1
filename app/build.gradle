@@ -8,6 +8,8 @@ apply plugin: "io.gitlab.arturbosch.detekt"
 
 apply plugin: 'io.fabric'
 
+apply plugin: 'kotlin-kapt'
+
 //apply plugin: 'checkstyle'
 
 android {
@@ -22,7 +24,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "org.evgem.android.drachukeugenesapp"
-        minSdkVersion 22
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 2
         versionName "2.0.0"
@@ -64,6 +66,11 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support:preference-v7:28.0.0'
+
+    def room_version = "1.1.1"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
+
 }
 
 // ktlint

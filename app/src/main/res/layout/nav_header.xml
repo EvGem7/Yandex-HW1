@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:text="@string/info"
         android:layout_marginBottom="@dimen/margins"
-        android:layout_marginStart="@dimen/margins"/>
+        android:layout_marginStart="@dimen/margins"
+        android:layout_marginLeft="@dimen/margins"/>
 
     <View
         android:layout_width="match_parent"

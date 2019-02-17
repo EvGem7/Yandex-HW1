@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import org.evgem.android.drachukeugenesapp.R
-
+//TODO refactor
 sealed class FirstFragment : Fragment() {
     protected lateinit var welcomeImage: ImageView
     protected lateinit var welcomeHeader: TextView

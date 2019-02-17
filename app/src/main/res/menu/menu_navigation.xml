@@ -4,7 +4,7 @@
         <item
             android:id="@+id/menu_launcher"
             android:icon="@drawable/ic_menu_launcher"
-            android:title="@string/menu_launcher" />
+            android:title="@string/menu_grid" />
 
         <item
             android:id="@+id/menu_list"

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-open class BaseChooserFragment : Fragment() {
+abstract class BaseChooserFragment : Fragment() {
     protected var chooser = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

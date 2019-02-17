@@ -20,11 +20,6 @@ class LayoutChooserFragment : BaseChooserFragment() {
     private lateinit var tightRadioButton: RadioButton
     private lateinit var tightBackground: ConstraintLayout
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setChooserState(AppConfig.getLayout(context))
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_layout_chooser, container, false)
 
@@ -34,6 +29,7 @@ class LayoutChooserFragment : BaseChooserFragment() {
         tightRadioButton = view.findViewById(R.id.tight_radio)
         tightBackground = view.findViewById(R.id.tight_background)
 
+        setChooserState(AppConfig.getLayout(context))
         update()
 
         standardBackground.setOnClickListener {

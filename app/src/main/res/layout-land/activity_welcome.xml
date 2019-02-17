@@ -2,20 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <android.support.v4.view.ViewPager
         android:id="@+id/welcome_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/next_button"/>
+        android:layout_above="@id/next_button" />
 
     <Button
         android:id="@+id/next_button"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:text="@string/next_button"
-        android:layout_marginBottom="@dimen/margins"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginEnd="@dimen/margins"
-        style="@style/Widget.AppCompat.Button.Colored"/>
+        android:layout_marginRight="@dimen/margins"
+        android:layout_marginBottom="@dimen/margins"
+        android:text="@string/next_button" />
 </RelativeLayout>

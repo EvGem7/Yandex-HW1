@@ -60,9 +60,10 @@ class WelcomeActivity : AppCompatActivity(), OnConfigurationChangedListener {
 
     private fun startNavigationActivity() {
         val intent = Intent(this, NavigationActivity::class.java)
-            .putExtra(NavigationActivity.EXTRA_FRAGMENT_TYPE, NavigationActivity.LAUNCHER_FRAGMENT)
+            .putExtra(NavigationActivity.EXTRA_FRAGMENT_TYPE, NavigationActivity.GRID_FRAGMENT)
         if (configurationChanged) {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         startActivity(intent)
         finish()

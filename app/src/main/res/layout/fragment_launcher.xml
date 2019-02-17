@@ -13,10 +13,6 @@
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
-
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/launcher_fab"-->
-            <!--style="@style/fab" />-->
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

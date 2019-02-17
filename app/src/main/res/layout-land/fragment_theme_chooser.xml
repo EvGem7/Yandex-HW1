@@ -11,6 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/margins"
+        android:layout_marginLeft="@dimen/margins"
         android:layout_marginTop="@dimen/margins"
         android:layout_marginBottom="@dimen/margins"
         android:layout_weight="1"
@@ -23,6 +24,9 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:paddingStart="@dimen/margins"
+            android:paddingLeft="@dimen/margins"
+            android:paddingEnd="@dimen/margins"
+            android:paddingRight="@dimen/margins"
             android:text="@string/light_theme"
             android:textSize="@dimen/theme_chooser_text" />
     </FrameLayout>
@@ -42,6 +46,9 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:paddingStart="@dimen/margins"
+            android:paddingLeft="@dimen/margins"
+            android:paddingEnd="@dimen/margins"
+            android:paddingRight="@dimen/margins"
             android:text="@string/dark_theme"
             android:textSize="@dimen/theme_chooser_text" />
     </FrameLayout>
