@@ -11,7 +11,6 @@
     <string name="tight_layout">Плотный макет</string>
     <string name="standard_layout_description">Портретная: 4 иконки в ряд Ландшафтная: 6 иконок в ряд</string>
     <string name="tight_layout_description">Портретная: 5 иконок в ряд\nЛандшафтная: 7 иконок в ряд</string>
-    <string name="color_snackbar">Цвет: %s</string>
     <string name="delete_action">Удалить</string>
     <string name="menu_grid">Сетка</string>
     <string name="settings_reconfigure_summary">Запустить страницу приветствия при следующем запуске</string>

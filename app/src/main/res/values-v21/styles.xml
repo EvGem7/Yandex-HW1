@@ -12,14 +12,6 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="fab">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">bottom|end</item>
-        <item name="android:layout_margin">@dimen/margins</item>
-        <item name="android:src">@drawable/ic_add</item>
-    </style>
-
     <declare-styleable name="CircularImageView">
         <attr name="stroke_color" format="color"/>
         <attr name="stroke_width" format="dimension"/>

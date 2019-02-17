@@ -11,7 +11,6 @@
     <string name="tight_layout">פריסה משולמת</string>
     <string name="standard_layout_description">דיוקן: 4 סמלים ברצף\nנוף: 6 סמלים בשורה</string>
     <string name="tight_layout_description">דיוקן: 5 סמלים ברצף\nנוף: 7 סמלים בשורה</string>
-    <string name="color_snackbar">צבע: %s</string>
     <string name="delete_action">הסר</string>
     <string name="menu_list">רשימה</string>
     <string name="menu_settings">הגדרות</string>

@@ -11,7 +11,6 @@
     <string name="tight_layout">タイトなレイアウト</string>
     <string name="standard_layout_description">縦：4列に並ぶ\n風景：一列に6つのアイコン</string>
     <string name="tight_layout_description">縦：5列に並ぶ\n風景：一列に7つのアイコン</string>
-    <string name="color_snackbar">色: %s</string>
     <string name="delete_action">削除します</string>
     <string name="menu_grid">グリッド</string>
     <string name="settings_reconfigure_summary">ようこそページを次回起動するときに開始します</string>
