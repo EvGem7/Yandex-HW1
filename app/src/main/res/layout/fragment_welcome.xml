@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <org.evgem.android.drachukeugenesapp.ui.custom.CircularImageView
+        android:id="@+id/welcome_image"
+        android:layout_width="@dimen/picture_diameter"
+        android:layout_height="@dimen/picture_diameter"
+        android:layout_centerInParent="true"
+        tools:src="@drawable/image_my_head" />
+
+    <TextView
+        android:id="@+id/welcome_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome_image"
+        android:layout_centerHorizontal="true"
+        tools:text="@string/app_name"
+        android:layout_margin="@dimen/margins"
+        android:textSize="@dimen/common_text"/>
+
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome_header"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margins"
+        tools:text="@string/welcome_text"
+        android:textSize="@dimen/common_text"/>
+</RelativeLayout>
