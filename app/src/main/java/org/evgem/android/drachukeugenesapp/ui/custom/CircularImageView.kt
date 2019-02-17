@@ -5,16 +5,16 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
 import android.view.MotionEvent
-import android.widget.ImageView
 import org.evgem.android.drachukeugenesapp.R
 import java.lang.Math.pow
 import java.lang.Math.sqrt
 
 //this code is stolen
 //TODO разобраться
-class CircularImageView(context: Context, attributeSet: AttributeSet? = null) : ImageView(context, attributeSet) {
+class CircularImageView(context: Context, attributeSet: AttributeSet? = null) : AppCompatImageView(context, attributeSet) {
     private var bitmapShader: BitmapShader? = null
     private val shaderMatrix: Matrix = Matrix()
 
