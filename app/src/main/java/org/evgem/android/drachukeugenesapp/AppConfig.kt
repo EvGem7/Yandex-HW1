@@ -3,6 +3,7 @@ package org.evgem.android.drachukeugenesapp
 import android.content.Context
 import android.support.v7.app.AppCompatDelegate
 import android.support.v7.app.AppCompatDelegate.*
+import org.evgem.android.drachukeugenesapp.data.application.ApplicationRepository
 import org.evgem.android.drachukeugenesapp.util.defaultSharedPreferences
 import org.evgem.android.drachukeugenesapp.util.getEnum
 import org.evgem.android.drachukeugenesapp.util.putEnum
@@ -60,5 +61,15 @@ object AppConfig {
         sharedPreferences?.edit()
             ?.putEnum(KEY_LAYOUT, layout)
             ?.apply()
+    }
+
+    fun applySortType(sortType: String) {
+        when (sortType) {
+            "a_z" -> ApplicationRepository.sortAZ()
+            "z_a" -> ApplicationRepository.sortZA()
+            "launch" -> ApplicationRepository.sortByLaunchCount()
+            "date" -> ApplicationRepository.sortByDate()
+            "no_sort" -> ApplicationRepository.removeSort()
+        }
     }
 }

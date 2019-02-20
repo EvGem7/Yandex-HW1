@@ -7,7 +7,8 @@ import java.lang.IllegalStateException
 data class AppEntity(
     val icon: Drawable?,
     val name: CharSequence,
-    val launchIntent: Intent
+    val launchIntent: Intent,
+    val date: Long
 ) {
     val packageName: String
         get() = launchIntent.`package` ?: throw IllegalStateException("launch intent doesn't contain package name")

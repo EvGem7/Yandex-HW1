@@ -3,40 +3,105 @@ package org.evgem.android.drachukeugenesapp.data.application
 import android.app.Application
 import android.content.pm.ApplicationInfo
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
+import org.evgem.android.drachukeugenesapp.data.entity.Launch
+import org.evgem.android.drachukeugenesapp.data.launch.LaunchRepository
+import org.evgem.android.drachukeugenesapp.util.settingsSharedPreferences
 
 object ApplicationRepository {
     private lateinit var application: Application
     private val packageManager get() = application.packageManager
     private var iconSize = -1
+    private var preSortBlock: (() -> Unit)? = null
     private var sortType: Comparator<AppEntity>? = null
+    private val launchMap = mutableMapOf<AppEntity, Launch>()
+
     val appList = ArrayList<AppEntity>()
+
+    private val azSort = Comparator<AppEntity> { o1, o2 ->
+        compareValues(o1.name.toString().toLowerCase(), o2.name.toString().toLowerCase())
+    }
+    private val zaSort = Comparator<AppEntity> { o1, o2 ->
+        compareValues(o2.name.toString().toLowerCase(), o1.name.toString().toLowerCase())
+    }
+    private val dateSort = Comparator<AppEntity> { o1, o2 ->
+        compareValues(o1.date, o2.date)
+    }
+    private val launchSort = Comparator<AppEntity> { o1, o2 ->
+        compareValues(launchMap[o2]?.launchCount, launchMap[o1]?.launchCount)
+    }
 
     fun removeSort() {
         sortType = null
+        preSortBlock = null
     }
 
     fun sortAZ() {
-        sortType = Comparator { o1, o2 -> compareValues(o1.name.toString(), o2.name.toString()) }
+        if (sortType == azSort) {
+            return
+        }
+        preSortBlock = null
+        sortType = azSort
         sort()
     }
 
     fun sortZA() {
-        sortType = Comparator { o1, o2 -> compareValues(o2.name.toString(), o1.name.toString()) }
+        if (sortType == zaSort) {
+            return
+        }
+        preSortBlock = null
+        sortType = zaSort
         sort()
     }
 
-    private fun sort() {
+    fun sortByDate() {
+        if (sortType == dateSort) {
+            return
+        }
+        preSortBlock = null
+        sortType = dateSort
+        sort()
+    }
+
+    val sortedByLaunches get() = sortType == launchSort
+
+    fun sortByLaunchCount() {
+        sortType = launchSort
+        preSortBlock = this::updateLaunches
+        sort()
+    }
+
+    private fun sort(notifyObservable: Boolean = true) {
+        preSortBlock?.invoke()
         sortType?.let { sortType -> appList.sortWith(sortType) }
+        if (notifyObservable) {
+            ApplicationObservable.onSort()
+        }
+    }
+
+    private fun updateLaunches() {
+        val launches = LaunchRepository.launches
+        for (app in appList) {
+            val launch = launches.find { launch -> launch.packageName == app.packageName }
+            launch?.let { launchMap[app] = it }
+        }
     }
 
     fun init(application: Application) {
         ApplicationRepository.application = application
         iconSize = application.resources.getDimensionPixelSize(R.dimen.launcher_icon_size)
         loadApps()
+
+        LaunchRepository.init(application)
+        val sortType = application.settingsSharedPreferences.getString("sort_type", "no_sort") ?: "no_sort"
+        AppConfig.applySortType(sortType)
+        sort()
+
     }
 
     fun loadApps() {
@@ -53,10 +118,11 @@ object ApplicationRepository {
         val launchIntent = packageManager.getLaunchIntentForPackage(appInfo.packageName) ?: return -1
         val name = appInfo.loadLabel(packageManager)
         val icon = getIcon(appInfo)
+        val date = packageManager.getPackageInfo(appInfo.packageName, 0).firstInstallTime
 
-        val app = AppEntity(icon, name, launchIntent)
+        val app = AppEntity(icon, name, launchIntent, date)
         appList.add(app)
-        sort()
+        sort(false)
         return appList.indexOf(app)
     }
 
@@ -78,12 +144,20 @@ object ApplicationRepository {
     }
 
     private fun getIcon(appInfo: ApplicationInfo): Drawable? {
-        var icon = appInfo.loadIcon(packageManager)
-        val bitmapIcon = icon as? BitmapDrawable
-        bitmapIcon?.let {
-            val bitmap = Bitmap.createScaledBitmap(bitmapIcon.bitmap, iconSize, iconSize, true)
-            icon = BitmapDrawable(application.resources, bitmap)
+        val icon = appInfo.loadIcon(packageManager)
+        val bitmap = Bitmap.createScaledBitmap(getBitmap(icon), iconSize, iconSize, true)
+        bitmap.density = application.resources.displayMetrics.densityDpi
+        return BitmapDrawable(application.resources, bitmap)
+    }
+
+    private fun getBitmap(drawable: Drawable): Bitmap {
+        if (drawable is BitmapDrawable) {
+            return drawable.bitmap
         }
-        return icon
+        val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
+        drawable.draw(canvas)
+        return bitmap
     }
 }

@@ -17,4 +17,7 @@
     <string name="settings_reconfigure_title">Reconfigure</string>
     <string name="menu_settings">Agordoj</string>
     <string name="menu_list">Listo</string>
+    <string name="phone_number">+375447509386</string>
+    <string name="email">evg200003@gmail.com</string>
+    <string name="telegram">https://t.me/evgem</string>
 </resources>

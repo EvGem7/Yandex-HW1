@@ -12,6 +12,33 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="BackToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="navigationIcon">@drawable/ic_arrow_back</item>
+    </style>
+
+    <style name="ProfileItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">@dimen/margins</item>
+        <item name="android:drawablePadding">@dimen/margins</item>
+        <item name="android:textSize">@dimen/common_text</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginStart">@dimen/divider_offset</item>
+        <item name="android:layout_marginLeft">@dimen/divider_offset</item>
+        <item name="android:layout_marginTop">@dimen/divider_margins</item>
+        <item name="android:layout_marginBottom">@dimen/divider_margins</item>
+        <item name="android:background">@color/backgroundGray</item>
+    </style>
+
     <declare-styleable name="CircularImageView">
         <attr name="stroke_color" format="color"/>
         <attr name="stroke_width" format="dimension"/>

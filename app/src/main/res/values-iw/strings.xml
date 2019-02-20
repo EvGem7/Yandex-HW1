@@ -17,4 +17,7 @@
     <string name="settings_reconfigure_title">הגדר מחדש</string>
     <string name="settings_reconfigure_summary">התחל את דף הקבלה בפעם הבאה שאתה מתחיל אותו</string>
     <string name="menu_grid">רשת</string>
+    <string name="phone_number">+375447509386</string>
+    <string name="email">evg200003@gmail.com</string>
+    <string name="telegram">https://t.me/evgem</string>
 </resources>

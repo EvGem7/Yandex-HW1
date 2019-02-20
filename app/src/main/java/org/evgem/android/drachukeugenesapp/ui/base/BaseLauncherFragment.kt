@@ -6,6 +6,10 @@ import org.evgem.android.drachukeugenesapp.data.application.ApplicationObserver
 abstract class BaseLauncherFragment : Fragment(), ApplicationObserver {
     protected abstract val adapter: ApplicationsRecyclerAdapter
 
+    override fun onSort() {
+        adapter.notifyDataSetChanged()
+    }
+
     final override fun onPackageInstalled(packageName: String?, position: Int) {
         adapter.notifyItemInserted(position)
     }

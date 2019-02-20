@@ -7,7 +7,7 @@ import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import io.fabric.sdk.android.Fabric
 import org.evgem.android.drachukeugenesapp.data.application.ApplicationRepository
-import org.evgem.android.drachukeugenesapp.data.database.LaunchRepository
+import org.evgem.android.drachukeugenesapp.data.launch.LaunchRepository
 
 class App : Application() {
     //TODO("в качестве иконки приложения использовать иконку из вашего профиля")
@@ -17,7 +17,6 @@ class App : Application() {
         AppCenter.start(this, "4adf0dd6-adf5-41bc-a15b-620487358d07", Analytics::class.java, Crashes::class.java)
         AppConfig.setTheme(AppConfig.getTheme(this), this)
         ApplicationRepository.init(this)
-        LaunchRepository.init(this)
     }
 }
 
