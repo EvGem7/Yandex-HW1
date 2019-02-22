@@ -1,9 +1,6 @@
-package org.evgem.android.drachukeugenesapp.data.database
+package org.evgem.android.drachukeugenesapp.data.database.dao
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 import org.evgem.android.drachukeugenesapp.data.entity.Launch
 
 @Dao
@@ -14,8 +11,8 @@ interface LaunchDao {
     @Query("SELECT * FROM launch WHERE package_name = :packageName")
     fun getByName(packageName: String): Launch
 
-    @Insert
-    fun insertAll(vararg launches: Launch)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(launch: Launch): Long
 
     @Query("UPDATE launch SET launch_count = launch_count + 1 WHERE package_name = :packageName")
     fun incrementLaunch(packageName: String)

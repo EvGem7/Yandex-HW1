@@ -1,30 +1,30 @@
-package org.evgem.android.drachukeugenesapp.data.launch
+package org.evgem.android.drachukeugenesapp.data
 
-import android.arch.persistence.room.Room
-import android.content.Context
 import org.evgem.android.drachukeugenesapp.data.application.ApplicationObservable
 import org.evgem.android.drachukeugenesapp.data.application.ApplicationObserver
 import org.evgem.android.drachukeugenesapp.data.application.ApplicationRepository
-import org.evgem.android.drachukeugenesapp.data.database.LaunchDao
-import org.evgem.android.drachukeugenesapp.data.database.LaunchDatabase
+import org.evgem.android.drachukeugenesapp.data.database.dao.LaunchDao
+import org.evgem.android.drachukeugenesapp.data.database.AppDatabase
 import org.evgem.android.drachukeugenesapp.data.entity.Launch
 
 object LaunchRepository : ApplicationObserver {
-    private lateinit var database: LaunchDatabase
-    private const val DATABASE_NAME = "launch_database"
+    private val database: AppDatabase get() = AppDatabase.INSTANCE
 
     private val dao: LaunchDao get() = database.launchDao()
     val launches: List<Launch> get() = dao.getAll()
 
-    fun init(context: Context) {
-        database = Room.databaseBuilder(context, LaunchDatabase::class.java, DATABASE_NAME)
-            .allowMainThreadQueries()
-            .build()
+    fun init() {
         val currentLaunches = launches
         for (app in ApplicationRepository.appList) {
             val launch = currentLaunches.find { launch -> launch.packageName == app.packageName }
             if (launch == null) {
-                dao.insertAll(Launch(app.packageName, 0))
+                dao.insert(Launch(app.packageName, 0))
+            }
+        }
+        for (launch in currentLaunches) {
+            val app = ApplicationRepository.appList.find { app -> app.packageName == launch.packageName }
+            if (app == null) {
+                dao.delete(launch)
             }
         }
         ApplicationObservable.addObserver(this)
@@ -41,7 +41,7 @@ object LaunchRepository : ApplicationObserver {
 
     override fun onPackageInstalled(packageName: String?, position: Int) {
         packageName?.let {
-            dao.insertAll(Launch(it, 0))
+            dao.insert(Launch(it, 0))
         }
     }
 

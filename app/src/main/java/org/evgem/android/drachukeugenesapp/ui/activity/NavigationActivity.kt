@@ -9,22 +9,22 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.FrameLayout
+import de.hdodenhof.circleimageview.CircleImageView
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.broadcast.LocaleBroadcastReceiver
 import org.evgem.android.drachukeugenesapp.broadcast.PackageBroadcastReceiver
 import org.evgem.android.drachukeugenesapp.ui.base.LockableActivity
-import org.evgem.android.drachukeugenesapp.ui.custom.CircularImageView
-import org.evgem.android.drachukeugenesapp.ui.fragment.profile.ProfileFragment
 import org.evgem.android.drachukeugenesapp.ui.fragment.SettingsFragment
 import org.evgem.android.drachukeugenesapp.ui.fragment.grid.GridLauncherFragment
 import org.evgem.android.drachukeugenesapp.ui.fragment.list.ListFragment
+import org.evgem.android.drachukeugenesapp.ui.fragment.profile.ProfileFragment
 import org.evgem.android.drachukeugenesapp.util.TAG
 
 class NavigationActivity : AppCompatActivity(), LockableActivity {
     private lateinit var fragmentContainer: FrameLayout
     private lateinit var navigationView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
-    private lateinit var avatarImageView: CircularImageView
+    private lateinit var avatarImageView: CircleImageView
 
     private val localeBroadcastReceiver = LocaleBroadcastReceiver()
     private val packageBroadcastReceiver = PackageBroadcastReceiver()

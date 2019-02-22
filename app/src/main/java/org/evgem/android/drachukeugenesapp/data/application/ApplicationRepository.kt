@@ -3,15 +3,15 @@ package org.evgem.android.drachukeugenesapp.data.application
 import android.app.Application
 import android.content.pm.ApplicationInfo
 import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
 import org.evgem.android.drachukeugenesapp.data.entity.Launch
-import org.evgem.android.drachukeugenesapp.data.launch.LaunchRepository
+import org.evgem.android.drachukeugenesapp.data.LaunchRepository
 import org.evgem.android.drachukeugenesapp.util.settingsSharedPreferences
+import org.evgem.android.drachukeugenesapp.util.toBitmap
 
 object ApplicationRepository {
     private lateinit var application: Application
@@ -97,7 +97,7 @@ object ApplicationRepository {
         iconSize = application.resources.getDimensionPixelSize(R.dimen.launcher_icon_size)
         loadApps()
 
-        LaunchRepository.init(application)
+        LaunchRepository.init()
         val sortType = application.settingsSharedPreferences.getString("sort_type", "no_sort") ?: "no_sort"
         AppConfig.applySortType(sortType)
         sort()
@@ -116,6 +116,8 @@ object ApplicationRepository {
 
     fun addApplication(appInfo: ApplicationInfo): Int {
         val launchIntent = packageManager.getLaunchIntentForPackage(appInfo.packageName) ?: return -1
+//        launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
         val name = appInfo.loadLabel(packageManager)
         val icon = getIcon(appInfo)
         val date = packageManager.getPackageInfo(appInfo.packageName, 0).firstInstallTime
@@ -144,20 +146,12 @@ object ApplicationRepository {
     }
 
     private fun getIcon(appInfo: ApplicationInfo): Drawable? {
-        val icon = appInfo.loadIcon(packageManager)
-        val bitmap = Bitmap.createScaledBitmap(getBitmap(icon), iconSize, iconSize, true)
-        bitmap.density = application.resources.displayMetrics.densityDpi
-        return BitmapDrawable(application.resources, bitmap)
+        return getIcon(appInfo.loadIcon(packageManager))
     }
 
-    private fun getBitmap(drawable: Drawable): Bitmap {
-        if (drawable is BitmapDrawable) {
-            return drawable.bitmap
-        }
-        val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
-        drawable.setBounds(0, 0, canvas.width, canvas.height)
-        drawable.draw(canvas)
-        return bitmap
+    fun getIcon(drawable: Drawable): Drawable {
+        val bitmap = Bitmap.createScaledBitmap(drawable.toBitmap(), iconSize, iconSize, true)
+        bitmap.density = application.resources.displayMetrics.densityDpi
+        return BitmapDrawable(application.resources, bitmap)
     }
 }

@@ -26,5 +26,8 @@
     <string name="email">evg200003@gmail.com</string>
     <string name="credit_card">4916 2703 9637 2983</string>
     <string name="telegram">https://t.me/evgem</string>
+    <string name="no_app">No app or contact</string>
+    <string name="add_favourite">Add to favourites</string>
+    <string name="remove_favourite">Remove from favourites</string>
 
 </resources>

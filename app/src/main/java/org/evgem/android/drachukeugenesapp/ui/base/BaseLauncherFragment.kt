@@ -10,11 +10,11 @@ abstract class BaseLauncherFragment : Fragment(), ApplicationObserver {
         adapter.notifyDataSetChanged()
     }
 
-    final override fun onPackageInstalled(packageName: String?, position: Int) {
+    override fun onPackageInstalled(packageName: String?, position: Int) {
         adapter.notifyItemInserted(position)
     }
 
-    final override fun onPackageRemoved(packageName: String?, position: Int) {
+    override fun onPackageRemoved(packageName: String?, position: Int) {
         adapter.notifyItemRemoved(position)
     }
 }

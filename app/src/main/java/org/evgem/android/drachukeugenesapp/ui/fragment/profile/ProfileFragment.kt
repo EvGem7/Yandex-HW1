@@ -16,7 +16,8 @@ import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.base.LockableActivity
 import org.evgem.android.drachukeugenesapp.ui.custom.DividerItemDecoration
 
-//TODO add offset between items
+//TODO add offset between itemsval favourite = Favourite()
+//TODO fix bug: when we go to profile fragment from landscape orientation displayMetrics isn't updated
 class ProfileFragment : Fragment() {
     private val adapter = ProfileRecyclerAdapter()
 
@@ -52,21 +53,6 @@ class ProfileFragment : Fragment() {
             recycler.addItemDecoration(dividerItemDecoration)
             recycle()
         }
-
-        //TODO fix bug: when we go to profile fragment from landscape orientation displayMetrics isn't updated
-        val screenSize = view.context.resources.displayMetrics.heightPixels
-        recycler.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                val recyclerSize = recycler.measuredHeight + recycler.paddingTop
-                val diff = screenSize - recyclerSize
-                if (diff > 0) {
-                    recycler.apply {
-                        setPadding(0, paddingTop, 0, diff)
-                    }
-                }
-                recycler.viewTreeObserver.removeOnGlobalLayoutListener(this)
-            }
-        })
 
         return view
     }

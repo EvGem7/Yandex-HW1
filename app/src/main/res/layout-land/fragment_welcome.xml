@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <org.evgem.android.drachukeugenesapp.ui.custom.CircularImageView
+    <ImageView
         android:id="@+id/welcome_image"
         android:layout_width="@dimen/picture_diameter"
         android:layout_height="@dimen/picture_diameter"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@id/welcome_header"
         android:layout_toLeftOf="@id/welcome_header"
-        tools:src="@drawable/my_head_image" />
+        />
         <!--TODO relative overlap fix-->
     <TextView
         android:id="@+id/welcome_header"

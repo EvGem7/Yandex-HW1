@@ -38,66 +38,15 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/profile_recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="32dp"/>
+            android:layout_height="match_parent"
+            android:paddingTop="32dp" />
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:orientation="vertical"-->
-            <!--android:paddingTop="32dp"-->
-            <!--android:paddingBottom="@dimen/profile_app_bar_height">-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/profile_phone"-->
-                <!--style="@style/ProfileItem"-->
-                <!--android:drawableStart="@drawable/ic_phone"-->
-                <!--android:drawableLeft="@drawable/ic_phone"-->
-                <!--android:text="@string/phone_number" />-->
-
-            <!--<View style="@style/Divider" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/profile_email"-->
-                <!--style="@style/ProfileItem"-->
-                <!--android:drawableStart="@drawable/ic_email"-->
-                <!--android:drawableLeft="@drawable/ic_email"-->
-                <!--android:text="@string/email" />-->
-
-            <!--<View style="@style/Divider" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/profile_card"-->
-                <!--style="@style/ProfileItem"-->
-                <!--android:drawableStart="@drawable/ic_credit_card"-->
-                <!--android:drawableLeft="@drawable/ic_credit_card"-->
-                <!--android:text="@string/credit_card" />-->
-
-            <!--<View style="@style/Divider" />-->
-
-            <!--<TextView-->
-                <!--style="@style/ProfileItem"-->
-                <!--android:drawableStart="@drawable/ic_message"-->
-                <!--android:drawableLeft="@drawable/ic_message"-->
-                <!--android:text="@string/telegram" />-->
-
-            <!--<View style="@style/Divider" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/profile_github"-->
-                <!--style="@style/ProfileItem"-->
-                <!--android:drawableStart="@drawable/ic_github"-->
-                <!--android:drawableLeft="@drawable/ic_github"-->
-                <!--android:text="@string/github_link" />-->
-
-
-        <!--</LinearLayout>-->
     </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout><!--TODO make landscape variant-->

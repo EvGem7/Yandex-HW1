@@ -4,12 +4,15 @@ import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import android.content.res.Configuration.ORIENTATION_PORTRAIT
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.res.ResourcesCompat
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import org.evgem.android.drachukeugenesapp.R
+
 //TODO refactor
 sealed class FirstFragment : Fragment() {
     protected lateinit var welcomeImage: ImageView
@@ -33,7 +36,13 @@ sealed class FirstFragment : Fragment() {
 class WelcomeFragment : FirstFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         block = {
-            welcomeImage.setImageResource(R.drawable.my_head_image)
+            val drawable = ResourcesCompat.getDrawableForDensity(
+                resources,
+                R.mipmap.ic_launcher,
+                DisplayMetrics.DENSITY_XXHIGH,
+                null
+            )
+            welcomeImage.setImageDrawable(drawable)
             welcomeHeader.setText(R.string.app_name)
             welcomeText.setText(R.string.welcome_text)
         }
