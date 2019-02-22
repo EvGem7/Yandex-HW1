@@ -2,7 +2,6 @@ package org.evgem.android.drachukeugenesapp
 
 import android.content.Context
 import android.support.v7.app.AppCompatDelegate
-import android.support.v7.app.AppCompatDelegate.*
 import org.evgem.android.drachukeugenesapp.data.application.ApplicationRepository
 import org.evgem.android.drachukeugenesapp.util.defaultSharedPreferences
 import org.evgem.android.drachukeugenesapp.util.getEnum

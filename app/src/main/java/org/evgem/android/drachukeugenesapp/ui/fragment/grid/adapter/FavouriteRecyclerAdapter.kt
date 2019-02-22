@@ -10,7 +10,8 @@ import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
 import org.evgem.android.drachukeugenesapp.ui.fragment.grid.viewholder.FavouriteRecyclerViewHolder
 import java.lang.IllegalStateException
 
-class FavouriteRecyclerAdapter(private val count: Int, private val activity: AppCompatActivity) : RecyclerView.Adapter<FavouriteRecyclerViewHolder>() {
+class FavouriteRecyclerAdapter(private val count: Int, private val activity: AppCompatActivity) :
+    RecyclerView.Adapter<FavouriteRecyclerViewHolder>() {
     var pendingActivityResultHolder: FavouriteRecyclerViewHolder? = null
     var currentAddingFavourite: AppEntity? = null
     var newFavouriteAdding = false

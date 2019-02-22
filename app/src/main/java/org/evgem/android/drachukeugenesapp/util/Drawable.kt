@@ -9,7 +9,7 @@ fun Drawable.toBitmap(): Bitmap {
     if (this is BitmapDrawable) {
         return bitmap
     }
-    val bitmap = Bitmap.createBitmap(8000, 8000, Bitmap.Config.ARGB_8888)
+    val bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
     setBounds(0, 0, canvas.width, canvas.height)
     draw(canvas)

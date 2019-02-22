@@ -95,24 +95,25 @@ class NavigationActivity : AppCompatActivity(), LockableActivity {
         }
     }
 
-    private fun setFragment(fragmentType: Int) {
-        fun performTransaction(fragment: Fragment, addToBackStack: Boolean = false) {
-            val currentFragment = supportFragmentManager.findFragmentById(R.id.navigation_fragment_container)
-            val transaction = supportFragmentManager.beginTransaction()
-            when {
-                currentFragment == null -> transaction
-                    .add(R.id.navigation_fragment_container, fragment)
-                    .commit()
-                addToBackStack -> transaction
-                    .replace(R.id.navigation_fragment_container, fragment)
-                    .addToBackStack(LAUNCHER_BACK_STACK_TAG)
-                    .commit()
-                else -> transaction
-                    .replace(R.id.navigation_fragment_container, fragment)
-                    .commit()
-            }
+    private fun performTransaction(fragment: Fragment, addToBackStack: Boolean = false) {
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.navigation_fragment_container)
+        val transaction = supportFragmentManager.beginTransaction()
+        when {
+            currentFragment == null -> transaction
+                .add(R.id.navigation_fragment_container, fragment)
+                .commit()
+            addToBackStack -> transaction
+                .replace(R.id.navigation_fragment_container, fragment)
+                .addToBackStack(LAUNCHER_BACK_STACK_TAG)
+                .commit()
+            else -> transaction
+                .replace(R.id.navigation_fragment_container, fragment)
+                .commit()
         }
+    }
 
+
+    private fun setFragment(fragmentType: Int) {
         //when we choose any fragment in menu back stack must be empty. Otherwise fragments can overlap each other
         supportFragmentManager.popBackStackImmediate(LAUNCHER_BACK_STACK_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
