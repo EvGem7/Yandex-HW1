@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:id="@+id/light_side_background"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margins"
+        android:layout_marginLeft="@dimen/margins"
+        android:layout_marginTop="@dimen/margins"
+        android:layout_marginBottom="@dimen/margins"
+        android:layout_weight="1"
+        android:background="@drawable/shape_border">
+
+        <RadioButton
+            android:id="@+id/light_side_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:paddingStart="@dimen/margins"
+            android:paddingLeft="@dimen/margins"
+            android:paddingEnd="@dimen/margins"
+            android:paddingRight="@dimen/margins"
+            android:text="@string/light_theme"
+            android:textSize="@dimen/theme_chooser_text" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/dark_side_background"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margins"
+        android:layout_weight="1"
+        android:background="@drawable/shape_border">
+
+        <RadioButton
+            android:id="@+id/dark_side_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:paddingStart="@dimen/margins"
+            android:paddingLeft="@dimen/margins"
+            android:paddingEnd="@dimen/margins"
+            android:paddingRight="@dimen/margins"
+            android:text="@string/dark_theme"
+            android:textSize="@dimen/theme_chooser_text" />
+    </FrameLayout>
+</LinearLayout>

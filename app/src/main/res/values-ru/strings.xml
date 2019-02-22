@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Приложение Драчука Евгения</string>
+    <string name="info">Драчук Евгений</string>\
+    <string name="github_link">https://github.com/EvGem7</string>
+    <string name="welcome_text">Дарова</string>
+    <string name="next_button">Далее</string>
+    <string name="app_description">Это мой супер лаунчер!</string>
+    <string name="light_theme">Светлая тема</string>
+    <string name="dark_theme">Тёмная тема</string>
+    <string name="standard_layout">Стандартный макет</string>
+    <string name="tight_layout">Плотный макет</string>
+    <string name="standard_layout_description">Портретная: 4 иконки в ряд Ландшафтная: 6 иконок в ряд</string>
+    <string name="tight_layout_description">Портретная: 5 иконок в ряд\nЛандшафтная: 7 иконок в ряд</string>
+    <string name="delete_action">Удалить</string>
+    <string name="menu_grid">Сетка</string>
+    <string name="settings_reconfigure_summary">Запустить страницу приветствия при следующем запуске</string>
+    <string name="settings_reconfigure_title">Перенастроить</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_list">Список</string>
+    <string name="phone_number">+375447509386</string>
+    <string name="email">evg200003@gmail.com</string>
+    <string name="telegram">https://t.me/evgem</string>
+    <string name="credit_card">4916 2703 9637 2983</string>
+    <string name="sort">Сортировка</string>
+    <string name="frequency_action">Частота</string>
+    <string name="information_action">Информация</string>
+    <string name="snackbar_show_frequency">Вы запустили %s %d раз!</string>
+    <string name="launcher">Лаунчер</string>
+    <string name="no_app">Добавить контакт</string>
+    <string name="add_favourite">Добавить в избранное</string>
+    <string name="remove_favourite">Удалить из избранного</string>
+    <string name="favourites">Избранное</string>
+</resources>

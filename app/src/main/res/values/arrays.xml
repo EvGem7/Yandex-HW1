@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="showed_sort_type">
+        <item>A-Z</item>
+        <item>Z-A</item>
+        <item>by launches count</item>
+        <item>by date</item>
+        <item>no sort</item>
+    </string-array>
+    <string-array name="sort_type">
+        <item>a_z</item>
+        <item>z_a</item>
+        <item>launch</item>
+        <item>date</item>
+        <item>no_sort</item>
+    </string-array>
+</resources>
