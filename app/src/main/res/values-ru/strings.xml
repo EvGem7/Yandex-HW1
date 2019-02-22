@@ -17,4 +17,17 @@
     <string name="settings_reconfigure_title">Перенастроить</string>
     <string name="menu_settings">Настройки</string>
     <string name="menu_list">Список</string>
+    <string name="phone_number">+375447509386</string>
+    <string name="email">evg200003@gmail.com</string>
+    <string name="telegram">https://t.me/evgem</string>
+    <string name="credit_card">4916 2703 9637 2983</string>
+    <string name="sort">Сортировка</string>
+    <string name="frequency_action">Частота</string>
+    <string name="information_action">Информация</string>
+    <string name="snackbar_show_frequency">Вы запустили %s %d раз!</string>
+    <string name="launcher">Лаунчер</string>
+    <string name="no_app">Добавить контакт</string>
+    <string name="add_favourite">Добавить в избранное</string>
+    <string name="remove_favourite">Удалить из избранного</string>
+    <string name="favourites">Избранное</string>
 </resources>

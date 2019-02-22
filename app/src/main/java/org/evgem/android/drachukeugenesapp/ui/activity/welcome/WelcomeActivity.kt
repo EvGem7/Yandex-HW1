@@ -9,11 +9,9 @@ import android.widget.Button
 import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.activity.NavigationActivity
-import org.evgem.android.drachukeugenesapp.ui.custom.OnConfigurationChangedListener
 
-class WelcomeActivity : AppCompatActivity(), OnConfigurationChangedListener {
+class WelcomeActivity : AppCompatActivity() {
     private var currentFragment = 0
-    private var configurationChanged = false
     private val welcomePagerAdapter = WelcomePagerAdapter(supportFragmentManager)
 
     private lateinit var fragmentContainer: ViewPager
@@ -53,44 +51,25 @@ class WelcomeActivity : AppCompatActivity(), OnConfigurationChangedListener {
             }
         }
     }
-
-    override fun onConfigurationChanged() {
-        configurationChanged = true
-    }
-
     private fun startNavigationActivity() {
         val intent = Intent(this, NavigationActivity::class.java)
             .putExtra(NavigationActivity.EXTRA_FRAGMENT_TYPE, NavigationActivity.GRID_FRAGMENT)
-        if (configurationChanged) {
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
         startActivity(intent)
         finish()
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        if (configurationChanged) {
-            startNavigationActivity()
-        }
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
         outState?.putInt(KEY_CURRENT_FRAGMENT, currentFragment)
-        outState?.putBoolean(KEY_THEME_CHANGED, configurationChanged)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
         currentFragment = savedInstanceState?.getInt(KEY_CURRENT_FRAGMENT) ?: 0
-        configurationChanged = savedInstanceState?.getBoolean(KEY_THEME_CHANGED) ?: false
     }
 
     companion object {
         private const val KEY_CURRENT_FRAGMENT = "current fragment"
-        private const val KEY_THEME_CHANGED = "theme changed"
 
         const val EXTRA_SHOW_ONCE = "org.evgem.android.drachukeugenesapp.ui.activity.welcome.show_once"
     }

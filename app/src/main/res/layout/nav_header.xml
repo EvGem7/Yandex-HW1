@@ -2,22 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginTop="@dimen/status_bar_height">
-    <org.evgem.android.drachukeugenesapp.ui.custom.CircularImageView
+    android:layout_marginTop="@dimen/status_bar_height"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/header_avatar"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:src="@drawable/avatar"
-        android:layout_margin="@dimen/margins" />
+        android:layout_margin="@dimen/margins"
+        android:scaleType="centerCrop"
+        android:src="@drawable/my_head_image" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/info"
-        android:layout_marginBottom="@dimen/margins"
         android:layout_marginStart="@dimen/margins"
-        android:layout_marginLeft="@dimen/margins"/>
+        android:layout_marginLeft="@dimen/margins"
+        android:layout_marginBottom="@dimen/margins"
+        android:text="@string/info" />
 
     <View
         android:layout_width="match_parent"

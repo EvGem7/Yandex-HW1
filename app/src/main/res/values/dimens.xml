@@ -11,4 +11,7 @@
     <dimen name="launcher_icon_size">54dp</dimen>
     <dimen name="status_bar_height">24dp</dimen>
     <dimen name="launcher_grid_text_size">12sp</dimen>
+    <dimen name="profile_app_bar_height">240dp</dimen>
+    <dimen name="divider_offset">56dp</dimen>
+    <dimen name="divider_margins">8dp</dimen>
 </resources>

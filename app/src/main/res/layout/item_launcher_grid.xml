@@ -4,7 +4,8 @@
     android:id="@+id/grid_launcher_app"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
+    android:ellipsize="end"
+    android:gravity="center"
+    android:maxLines="2"
     android:textSize="@dimen/launcher_grid_text_size"
-    tools:drawableTop="@mipmap/ic_launcher_round"
     tools:text="App Name" />

@@ -1,17 +1,23 @@
 package org.evgem.android.drachukeugenesapp.data.application
 
-object ApplicationObservable {
+object ApplicationObservable : ApplicationObserver {
     private val observers = ArrayList<ApplicationObserver>()
 
-    fun onPackageInstalled(packageName: String?, position: Int) {
+    override fun onPackageInstalled(packageName: String?, position: Int) {
         for (observer in observers) {
             observer.onPackageInstalled(packageName, position)
         }
     }
 
-    fun onPackageRemoved(packageName: String?, position: Int) {
+    override fun onPackageRemoved(packageName: String?, position: Int) {
         for (observer in observers) {
             observer.onPackageRemoved(packageName, position)
+        }
+    }
+
+    override fun onSort() {
+        for (observer in observers) {
+            observer.onSort()
         }
     }
 

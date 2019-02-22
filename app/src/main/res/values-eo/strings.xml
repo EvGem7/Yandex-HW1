@@ -17,4 +17,17 @@
     <string name="settings_reconfigure_title">Reconfigure</string>
     <string name="menu_settings">Agordoj</string>
     <string name="menu_list">Listo</string>
+    <string name="phone_number">+375447509386</string>
+    <string name="email">evg200003@gmail.com</string>
+    <string name="telegram">https://t.me/evgem</string>
+    <string name="credit_card">4916 2703 9637 2983</string>
+    <string name="sort">Speco</string>
+    <string name="frequency_action">Frekvenco</string>
+    <string name="information_action">Informo</string>
+    <string name="snackbar_show_frequency">Vi kuris %s %d fojo!</string>
+    <string name="launcher">Launcher</string>
+    <string name="no_app">Aldoni kontakto</string>
+    <string name="add_favourite">Aldoni al miaj plej ŝatataj</string>
+    <string name="remove_favourite">Remove from favorites</string>
+    <string name="favourites">Ŝatolistoj</string>
 </resources>
