@@ -21,4 +21,13 @@
     <string name="email">evg200003@gmail.com</string>
     <string name="telegram">https://t.me/evgem</string>
     <string name="credit_card">4916 2703 9637 2983</string>
+    <string name="sort">並べ替え</string>
+    <string name="frequency_action">周波数</string>
+    <string name="information_action">情報</string>
+    <string name="snackbar_show_frequency">%sは%d回発売されました！</string>
+    <string name="launcher">ランチャー</string>
+    <string name="no_app">連絡先の追加</string>
+    <string name="add_favourite">お気に入りに追加</string>
+    <string name="remove_favourite">お気に入りから削除</string>
+    <string name="favourites">ﾂつ\"ﾂづｩﾂ</string>
 </resources>

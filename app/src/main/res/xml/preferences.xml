@@ -10,12 +10,17 @@
 
     <CheckBoxPreference
         android:key="run_welcome_activity_checkbox"
-        android:title="@string/settings_reconfigure_title"
-        android:summary="@string/settings_reconfigure_summary"/>
+        android:summary="@string/settings_reconfigure_summary"
+        android:title="@string/settings_reconfigure_title" />
 
-    <ListPreference android:key="sort_type"
-        android:title="@string/sort"
+    <ListPreference
         android:entries="@array/showed_sort_type"
-        android:entryValues="@array/sort_type"/>
+        android:entryValues="@array/sort_type"
+        android:key="sort_type"
+        android:title="@string/sort" />
+
+    <SwitchPreferenceCompat
+        android:key="favourite_switch"
+        android:title="@string/favourites" />
 
 </PreferenceScreen>

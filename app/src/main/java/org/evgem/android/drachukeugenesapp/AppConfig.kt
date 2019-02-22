@@ -12,6 +12,7 @@ object AppConfig {
     private const val KEY_THEME = "theme"
     private const val KEY_LAYOUT = "layout"
     private const val KEY_IS_CONFIGURED = "is_configured"
+    private const val KEY_IS_FAVOURITE_SHOWN = "is_favourite_shown"
 
     enum class Theme {
         LIGHT, DARK
@@ -19,6 +20,18 @@ object AppConfig {
 
     enum class Layout(val portraitIconAmount: Int, val landscapeIconAmount: Int) {
         STANDARD(4, 6), TIGHT(5, 7)
+    }
+
+    fun isFavouriteShown(context: Context?): Boolean {
+        val sharedPreferences = context?.defaultSharedPreferences
+        return sharedPreferences?.getBoolean(KEY_IS_FAVOURITE_SHOWN, true) ?: true
+    }
+
+    fun setFavouriteShown(value: Boolean, context: Context?) {
+        val sharedPreferences = context?.defaultSharedPreferences
+        sharedPreferences?.edit()
+            ?.putBoolean(KEY_IS_FAVOURITE_SHOWN, value)
+            ?.apply()
     }
 
     fun isConfigured(context: Context?): Boolean {

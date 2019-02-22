@@ -21,4 +21,13 @@
     <string name="email">evg200003@gmail.com</string>
     <string name="telegram">https://t.me/evgem</string>
     <string name="credit_card">4916 2703 9637 2983</string>
+    <string name="sort">Sort</string>
+    <string name="information_action">Information</string>
+    <string name="frequency_action">Frequency</string>
+    <string name="snackbar_show_frequency">%s has been launched %d times!</string>
+    <string name="launcher">Launcher</string>
+    <string name="no_app">Tap here to add contact</string>
+    <string name="add_favourite">Add to favourites</string>
+    <string name="remove_favourite">Remove from favourites</string>
+    <string name="favourites">Favourites</string>
 </resources>

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/welcome_image"
         android:layout_width="@dimen/picture_diameter"
         android:layout_height="@dimen/picture_diameter"

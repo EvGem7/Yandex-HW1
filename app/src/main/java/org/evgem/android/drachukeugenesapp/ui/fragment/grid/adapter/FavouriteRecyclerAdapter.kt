@@ -1,5 +1,6 @@
 package org.evgem.android.drachukeugenesapp.ui.fragment.grid.adapter
 
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +10,8 @@ import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
 import org.evgem.android.drachukeugenesapp.ui.fragment.grid.viewholder.FavouriteRecyclerViewHolder
 import java.lang.IllegalStateException
 
-class FavouriteRecyclerAdapter(private val count: Int) : RecyclerView.Adapter<FavouriteRecyclerViewHolder>() {
+class FavouriteRecyclerAdapter(private val count: Int, private val activity: AppCompatActivity) : RecyclerView.Adapter<FavouriteRecyclerViewHolder>() {
+    var pendingActivityResultHolder: FavouriteRecyclerViewHolder? = null
     var currentAddingFavourite: AppEntity? = null
     var newFavouriteAdding = false
         set(value) {
@@ -29,7 +31,7 @@ class FavouriteRecyclerAdapter(private val count: Int) : RecyclerView.Adapter<Fa
 
     override fun onCreateViewHolder(container: ViewGroup, type: Int): FavouriteRecyclerViewHolder {
         val view = LayoutInflater.from(container.context).inflate(R.layout.item_launcher_grid, container, false)
-        return FavouriteRecyclerViewHolder(view, this)
+        return FavouriteRecyclerViewHolder(view, this, activity)
     }
 
     override fun getItemCount(): Int = count

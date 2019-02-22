@@ -16,7 +16,7 @@ import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.base.LockableActivity
 import org.evgem.android.drachukeugenesapp.ui.custom.DividerItemDecoration
 
-//TODO add offset between itemsval favourite = Favourite()
+//TODO add offset between items
 //TODO fix bug: when we go to profile fragment from landscape orientation displayMetrics isn't updated
 class ProfileFragment : Fragment() {
     private val adapter = ProfileRecyclerAdapter()

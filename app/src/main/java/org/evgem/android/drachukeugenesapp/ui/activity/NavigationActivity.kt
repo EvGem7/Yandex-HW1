@@ -1,5 +1,6 @@
 package org.evgem.android.drachukeugenesapp.ui.activity
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -140,6 +141,16 @@ class NavigationActivity : AppCompatActivity(), LockableActivity {
         super.onConfigurationChanged(newConfig)
         if (!orientationLocked) {
             recreate()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == GridLauncherFragment.CONTACT_REQUEST_CODE) {
+            val fragment = supportFragmentManager.findFragmentById(R.id.navigation_fragment_container)
+            if (fragment is GridLauncherFragment) {
+                fragment.onActivityResult(requestCode, resultCode, data)
+            }
         }
     }
 

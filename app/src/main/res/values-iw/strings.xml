@@ -21,4 +21,13 @@
     <string name="email">evg200003@gmail.com</string>
     <string name="telegram">https://t.me/evgem</string>
     <string name="credit_card">4916 2703 9637 2983</string>
+    <string name="sort">מיון</string>
+    <string name="frequency_action">תדירות</string>
+    <string name="information_action">מידע</string>
+    <string name="snackbar_show_frequency">אתה רץ %s %d פעם אחת!</string>
+    <string name="launcher">משגר</string>
+    <string name="no_app">הוספת איש קשר</string>
+    <string name="add_favourite">הוסף למועדפים</string>
+    <string name="remove_favourite">הסר מהמועדפים</string>
+    <string name="favourites">מועדפים</string>
 </resources>

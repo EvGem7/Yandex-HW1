@@ -1,7 +1,10 @@
 package org.evgem.android.drachukeugenesapp.ui.fragment.grid
 
+import android.app.Activity
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -10,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
+import org.evgem.android.drachukeugenesapp.data.ContactRepository
 import org.evgem.android.drachukeugenesapp.data.FavouriteRepository
 import org.evgem.android.drachukeugenesapp.data.application.ApplicationObservable
 import org.evgem.android.drachukeugenesapp.ui.base.ApplicationsRecyclerAdapter
@@ -25,16 +29,6 @@ class GridLauncherFragment : BaseLauncherFragment() {
     private lateinit var gridLayoutManager: GridLayoutManager
     override val adapter: GridRecyclerAdapter = GridRecyclerAdapter()
     private lateinit var favouriteAdapter: FavouriteRecyclerAdapter
-
-    override fun onPackageRemoved(packageName: String?, position: Int) {
-        super.onPackageRemoved(packageName, position)
-        packageName?.let {
-            val pos = FavouriteRepository.remove(packageName)
-            if (pos != -1) {
-                favouriteAdapter.notifyItemChanged(pos)
-            }
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,11 +70,17 @@ class GridLauncherFragment : BaseLauncherFragment() {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         favouriteRecyclerView = view.findViewById(R.id.favourite_recycler)
+        if (!AppConfig.isFavouriteShown(context)) {
+            favouriteRecyclerView.visibility = View.GONE
+        }
+
         favouriteRecyclerView.layoutManager = GridLayoutManager(context, spanCount)
         favouriteRecyclerView.addItemDecoration(offsetItemDecoration)
 
-        favouriteAdapter = FavouriteRecyclerAdapter(spanCount)
+        favouriteAdapter = FavouriteRecyclerAdapter(spanCount, activity as AppCompatActivity)
+        FavouriteRepository.favouriteAdapter = favouriteAdapter
         favouriteRecyclerView.adapter = favouriteAdapter
+
 
         adapter.onFavouriteAdd = {
             favouriteAdapter.currentAddingFavourite = it
@@ -88,5 +88,33 @@ class GridLauncherFragment : BaseLauncherFragment() {
         }
 
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        FavouriteRepository.favouriteAdapter = null
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode != Activity.RESULT_OK) {
+            return
+        }
+        when (requestCode) {
+            CONTACT_REQUEST_CODE -> {
+                data?.data?.let { contactUri ->
+                    val appEntity =
+                        FavouriteRepository.getAppEntityFromContact(ContactRepository.getContact(contactUri) ?: return)
+                    favouriteAdapter.pendingActivityResultHolder?.let {
+                        it.bind(appEntity)
+                        FavouriteRepository[it.adapterPosition] = appEntity
+                    }
+                    favouriteAdapter.pendingActivityResultHolder = null
+                }
+            }
+        }
+    }
+
+    companion object {
+        const val CONTACT_REQUEST_CODE = 1000
     }
 }

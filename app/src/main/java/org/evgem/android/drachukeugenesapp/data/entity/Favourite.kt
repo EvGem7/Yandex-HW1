@@ -17,10 +17,7 @@ data class Favourite(
     val packageName: String,
 
     @ColumnInfo(name = "contact_name")
-    val contactName: String? = null,
-
-    @ColumnInfo(name = "phone_number")
-    val phoneNumber: String? = null
+    val contactName: String? = null
 ) {
     companion object {
         const val CONTACT = 0

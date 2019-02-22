@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ContextMenu
 import android.view.View
 import org.evgem.android.drachukeugenesapp.R
+import org.evgem.android.drachukeugenesapp.data.FavouriteRepository
 import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
 import org.evgem.android.drachukeugenesapp.data.LaunchRepository
 
@@ -18,7 +19,9 @@ abstract class ApplicationRecyclerViewHolder(itemView: View) : RecyclerView.View
         app ?: return
         itemView.setOnClickListener {
             it.context.startActivity(app.launchIntent)
-            LaunchRepository.incrementLaunch(app.packageName)
+            if (app.packageName != FavouriteRepository.CONTACT_PACKAGE_NAME) {
+                LaunchRepository.incrementLaunch(app.packageName)
+            }
         }
         itemView.setOnCreateContextMenuListener { menu, v, _ ->
             if (menu != null) {
@@ -26,8 +29,6 @@ abstract class ApplicationRecyclerViewHolder(itemView: View) : RecyclerView.View
             }
         }
     }
-
-
 
     companion object {
         fun configureContextMenu(menu: ContextMenu, view: View, app: AppEntity) {

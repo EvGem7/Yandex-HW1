@@ -6,6 +6,7 @@ import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import io.fabric.sdk.android.Fabric
+import org.evgem.android.drachukeugenesapp.data.ContactRepository
 import org.evgem.android.drachukeugenesapp.data.FavouriteRepository
 import org.evgem.android.drachukeugenesapp.data.application.ApplicationRepository
 import org.evgem.android.drachukeugenesapp.data.database.AppDatabase
@@ -18,9 +19,10 @@ class App : Application() {
         AppCenter.start(this, "4adf0dd6-adf5-41bc-a15b-620487358d07", Analytics::class.java, Crashes::class.java)
         AppConfig.setTheme(AppConfig.getTheme(this), this)
 
+        ContactRepository.init(this)
         AppDatabase.init(this)
         ApplicationRepository.init(this)
-        FavouriteRepository.init()
+        FavouriteRepository.init(this)
     }
 }
 

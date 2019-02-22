@@ -25,6 +25,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private lateinit var runWelcomeActivityCheckBox: CheckBoxPreference
     private lateinit var sortTypeList: ListPreference
     private lateinit var toolbar: Toolbar
+    private lateinit var favouritesSwitch: SwitchPreferenceCompat
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
@@ -45,10 +46,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
         tightLayoutSwitch = findPreference("tight_layout_picker") as SwitchPreferenceCompat
         runWelcomeActivityCheckBox = findPreference("run_welcome_activity_checkbox") as CheckBoxPreference
         sortTypeList = findPreference("sort_type") as ListPreference
+        favouritesSwitch = findPreference("favourite_switch") as SwitchPreferenceCompat
 
         darkThemeSwitch.isChecked = AppConfig.getTheme(context) == DARK
         tightLayoutSwitch.isChecked = AppConfig.getLayout(context) == TIGHT
         runWelcomeActivityCheckBox.isChecked = !AppConfig.isConfigured(context)
+        favouritesSwitch.isChecked = AppConfig.isFavouriteShown(context)
 
         darkThemeSwitch.setOnPreferenceClickListener {
             val theme = if (darkThemeSwitch.isChecked) DARK else LIGHT
@@ -75,6 +78,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
             val index = sortTypeList.findIndexOfValue(newSortType)
             sortTypeList.summary = sortTypeList.entries[index]
             return@setOnPreferenceChangeListener true
+        }
+        favouritesSwitch.setOnPreferenceClickListener {
+            AppConfig.setFavouriteShown(favouritesSwitch.isChecked, context)
+            return@setOnPreferenceClickListener true
         }
     }
 }
