@@ -77,6 +77,7 @@ dependencies {
     kapt "android.arch.persistence.room:compiler:$room_version"
 
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'com.yandex.android:mobmetricalib:3.5.3'
 
 }
 

@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yandex.metrica.YandexMetrica
 import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.data.ContactRepository
@@ -21,6 +23,7 @@ import org.evgem.android.drachukeugenesapp.ui.base.BaseLauncherFragment
 import org.evgem.android.drachukeugenesapp.ui.custom.OffsetItemDecoration
 import org.evgem.android.drachukeugenesapp.ui.fragment.grid.adapter.FavouriteRecyclerAdapter
 import org.evgem.android.drachukeugenesapp.ui.fragment.grid.adapter.GridRecyclerAdapter
+import org.evgem.android.drachukeugenesapp.util.ReportEvents
 
 class GridLauncherFragment : BaseLauncherFragment() {
     private lateinit var gridRecyclerView: RecyclerView
@@ -33,6 +36,9 @@ class GridLauncherFragment : BaseLauncherFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ApplicationObservable.addObserver(this)
+        if (savedInstanceState == null) {
+            YandexMetrica.reportEvent(ReportEvents.GRID_FRAGMENT_STARTED)
+        }
     }
 
     override fun onDestroy() {

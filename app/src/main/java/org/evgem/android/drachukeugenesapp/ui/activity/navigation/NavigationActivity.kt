@@ -1,4 +1,4 @@
-package org.evgem.android.drachukeugenesapp.ui.activity
+package org.evgem.android.drachukeugenesapp.ui.activity.navigation
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.FrameLayout
+import com.yandex.metrica.YandexMetrica
 import de.hdodenhof.circleimageview.CircleImageView
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.broadcast.LocaleBroadcastReceiver
@@ -19,6 +20,7 @@ import org.evgem.android.drachukeugenesapp.ui.fragment.SettingsFragment
 import org.evgem.android.drachukeugenesapp.ui.fragment.grid.GridLauncherFragment
 import org.evgem.android.drachukeugenesapp.ui.fragment.list.ListFragment
 import org.evgem.android.drachukeugenesapp.ui.fragment.profile.ProfileFragment
+import org.evgem.android.drachukeugenesapp.util.ReportEvents
 import org.evgem.android.drachukeugenesapp.util.TAG
 
 class NavigationActivity : AppCompatActivity(), LockableActivity {
@@ -26,6 +28,8 @@ class NavigationActivity : AppCompatActivity(), LockableActivity {
     private lateinit var navigationView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var avatarImageView: CircleImageView
+
+    private lateinit var fragmentSwipeController: FragmentSwipeController
 
     private val localeBroadcastReceiver = LocaleBroadcastReceiver()
     private val packageBroadcastReceiver = PackageBroadcastReceiver()
@@ -45,6 +49,10 @@ class NavigationActivity : AppCompatActivity(), LockableActivity {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        if (savedInstanceState == null) {
+            YandexMetrica.reportEvent(ReportEvents.NAVIGATION_ACTIVITY_STARTED)
+        }
+
         registerReceiver(packageBroadcastReceiver, packageBroadcastReceiver.intentFilter)
         registerReceiver(localeBroadcastReceiver, localeBroadcastReceiver.intentFilter)
 
@@ -55,6 +63,7 @@ class NavigationActivity : AppCompatActivity(), LockableActivity {
         drawerLayout = findViewById(R.id.drawer)
 
         val fragmentType = intent.getIntExtra(EXTRA_FRAGMENT_TYPE, -1)
+        fragmentSwipeController = FragmentSwipeController(this)
         setFragment(fragmentType)
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
@@ -81,15 +90,24 @@ class NavigationActivity : AppCompatActivity(), LockableActivity {
             when (fragment) {
                 is GridLauncherFragment -> {
                     navigationView.setCheckedItem(R.id.menu_grid)
-                    intent.putExtra(EXTRA_FRAGMENT_TYPE, GRID_FRAGMENT)
+                    intent.putExtra(
+                        EXTRA_FRAGMENT_TYPE,
+                        GRID_FRAGMENT
+                    )
                 }
                 is ListFragment -> {
                     navigationView.setCheckedItem(R.id.menu_list)
-                    intent.putExtra(EXTRA_FRAGMENT_TYPE, LIST_FRAGMENT)
+                    intent.putExtra(
+                        EXTRA_FRAGMENT_TYPE,
+                        LIST_FRAGMENT
+                    )
                 }
                 is SettingsFragment -> {
                     navigationView.setCheckedItem(R.id.menu_settings)
-                    intent.putExtra(EXTRA_FRAGMENT_TYPE, SETTINGS_FRAGMENT)
+                    intent.putExtra(
+                        EXTRA_FRAGMENT_TYPE,
+                        SETTINGS_FRAGMENT
+                    )
                 }
             }
         }
@@ -113,7 +131,7 @@ class NavigationActivity : AppCompatActivity(), LockableActivity {
     }
 
 
-    private fun setFragment(fragmentType: Int) {
+    fun setFragment(fragmentType: Int) {
         //when we choose any fragment in menu back stack must be empty. Otherwise fragments can overlap each other
         supportFragmentManager.popBackStackImmediate(LAUNCHER_BACK_STACK_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
@@ -136,6 +154,7 @@ class NavigationActivity : AppCompatActivity(), LockableActivity {
             PROFILE_FRAGMENT -> performTransaction(ProfileFragment(), true)
             else -> Log.e(TAG, "unknown fragment type")
         }
+        fragmentSwipeController.onSetFragment(fragmentType)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {

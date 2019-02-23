@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.ContextMenu
 import android.view.View
 import android.widget.TextView
+import com.yandex.metrica.YandexMetrica
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.data.FavouriteRepository
 import org.evgem.android.drachukeugenesapp.data.application.ApplicationRepository
@@ -15,6 +16,7 @@ import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
 import org.evgem.android.drachukeugenesapp.ui.base.ApplicationRecyclerViewHolder
 import org.evgem.android.drachukeugenesapp.ui.fragment.grid.GridLauncherFragment
 import org.evgem.android.drachukeugenesapp.ui.fragment.grid.adapter.FavouriteRecyclerAdapter
+import org.evgem.android.drachukeugenesapp.util.ReportEvents
 
 class FavouriteRecyclerViewHolder(
     itemView: View,
@@ -44,6 +46,7 @@ class FavouriteRecyclerViewHolder(
                     super.bind(adapter.currentAddingFavourite)
                     FavouriteRepository[adapterPosition] = adapter.currentAddingFavourite
                     adapter.newFavouriteAdding = false
+                    YandexMetrica.reportEvent(ReportEvents.ADDED_TO_FAVOURITES)
                 }
 
                 view.setOnCreateContextMenuListener { menu, v, _ ->
@@ -56,11 +59,14 @@ class FavouriteRecyclerViewHolder(
     }
 
     private fun configureContextMenu(menu: ContextMenu, view: View, app: AppEntity) {
-        ApplicationRecyclerViewHolder.configureContextMenu(menu, view, app)
+        if (app.packageName != FavouriteRepository.CONTACT_PACKAGE_NAME) {
+            ApplicationRecyclerViewHolder.configureContextMenu(menu, view, app)
+        }
         menu.add(view.resources.getString(R.string.remove_favourite))
             .setOnMenuItemClickListener {
                 FavouriteRepository[adapterPosition] = null
                 adapter.notifyItemChanged(adapterPosition)
+                YandexMetrica.reportEvent(ReportEvents.REMOVED_FROM_FAVOURITES)
                 true
             }
     }

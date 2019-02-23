@@ -6,12 +6,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yandex.metrica.YandexMetrica
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.data.application.ApplicationObservable
 import org.evgem.android.drachukeugenesapp.ui.base.ApplicationsRecyclerAdapter
 import org.evgem.android.drachukeugenesapp.ui.base.BaseLauncherFragment
 import org.evgem.android.drachukeugenesapp.ui.custom.DividerItemDecoration
 import org.evgem.android.drachukeugenesapp.ui.custom.OffsetItemDecoration
+import org.evgem.android.drachukeugenesapp.util.ReportEvents
 
 class ListFragment : BaseLauncherFragment() {
     private lateinit var recyclerView: RecyclerView
@@ -20,6 +22,7 @@ class ListFragment : BaseLauncherFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ApplicationObservable.addObserver(this)
+        YandexMetrica.reportEvent(ReportEvents.LIST_FRAGMENT_STARTED)
     }
 
     override fun onDestroy() {

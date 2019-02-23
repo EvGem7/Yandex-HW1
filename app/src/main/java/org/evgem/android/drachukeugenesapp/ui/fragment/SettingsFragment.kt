@@ -12,12 +12,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import com.yandex.metrica.YandexMetrica
 import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.AppConfig.Layout.STANDARD
 import org.evgem.android.drachukeugenesapp.AppConfig.Layout.TIGHT
 import org.evgem.android.drachukeugenesapp.AppConfig.Theme.DARK
 import org.evgem.android.drachukeugenesapp.AppConfig.Theme.LIGHT
 import org.evgem.android.drachukeugenesapp.R
+import org.evgem.android.drachukeugenesapp.util.ReportEvents
 
 class SettingsFragment : PreferenceFragmentCompat() {
     private lateinit var darkThemeSwitch: SwitchPreferenceCompat
@@ -26,6 +28,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private lateinit var sortTypeList: ListPreference
     private lateinit var toolbar: Toolbar
     private lateinit var favouritesSwitch: SwitchPreferenceCompat
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) {
+            YandexMetrica.reportEvent(ReportEvents.SETTINGS_FRAGMENT_STARTED)
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
@@ -57,15 +66,18 @@ class SettingsFragment : PreferenceFragmentCompat() {
             val theme = if (darkThemeSwitch.isChecked) DARK else LIGHT
             AppConfig.setTheme(theme, context)
             activity?.recreate()
+            YandexMetrica.reportEvent(ReportEvents.THEME_CHANGED)
             return@setOnPreferenceClickListener true
         }
         tightLayoutSwitch.setOnPreferenceClickListener {
             val layout = if (tightLayoutSwitch.isChecked) TIGHT else STANDARD
             AppConfig.setLayout(layout, context)
+            YandexMetrica.reportEvent(ReportEvents.LAYOUT_CHANGED)
             return@setOnPreferenceClickListener true
         }
         runWelcomeActivityCheckBox.setOnPreferenceClickListener {
             AppConfig.setConfigured(!runWelcomeActivityCheckBox.isChecked, context)
+            YandexMetrica.reportEvent(ReportEvents.RECONFIGURED)
             return@setOnPreferenceClickListener true
         }
 
@@ -77,10 +89,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
             AppConfig.applySortType(newSortType)
             val index = sortTypeList.findIndexOfValue(newSortType)
             sortTypeList.summary = sortTypeList.entries[index]
+            YandexMetrica.reportEvent(ReportEvents.SORT_CHANGED)
             return@setOnPreferenceChangeListener true
         }
         favouritesSwitch.setOnPreferenceClickListener {
             AppConfig.setFavouriteShown(favouritesSwitch.isChecked, context)
+            YandexMetrica.reportEvent(ReportEvents.FAVOURITES_SHOW_CHANGED)
             return@setOnPreferenceClickListener true
         }
     }

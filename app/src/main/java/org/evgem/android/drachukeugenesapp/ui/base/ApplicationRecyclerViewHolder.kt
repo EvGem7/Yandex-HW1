@@ -8,10 +8,12 @@ import android.support.design.widget.Snackbar
 import android.support.v7.widget.RecyclerView
 import android.view.ContextMenu
 import android.view.View
+import com.yandex.metrica.YandexMetrica
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.data.FavouriteRepository
 import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
 import org.evgem.android.drachukeugenesapp.data.LaunchRepository
+import org.evgem.android.drachukeugenesapp.util.ReportEvents
 
 abstract class ApplicationRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -19,6 +21,7 @@ abstract class ApplicationRecyclerViewHolder(itemView: View) : RecyclerView.View
         app ?: return
         itemView.setOnClickListener {
             it.context.startActivity(app.launchIntent)
+            YandexMetrica.reportEvent(ReportEvents.APP_LAUNCHED)
             if (app.packageName != FavouriteRepository.CONTACT_PACKAGE_NAME) {
                 LaunchRepository.incrementLaunch(app.packageName)
             }
@@ -48,6 +51,7 @@ abstract class ApplicationRecyclerViewHolder(itemView: View) : RecyclerView.View
             val packageUri = Uri.parse("package:$packageName")
             val uninstallIntent = Intent(Intent.ACTION_UNINSTALL_PACKAGE, packageUri)
             context.startActivity(uninstallIntent)
+            YandexMetrica.reportEvent(ReportEvents.APP_DELETED)
             return true
         }
 
@@ -59,6 +63,7 @@ abstract class ApplicationRecyclerViewHolder(itemView: View) : RecyclerView.View
                 resources.getString(R.string.snackbar_show_frequency, app.name, count),
                 Snackbar.LENGTH_LONG
             ).show()
+            YandexMetrica.reportEvent(ReportEvents.FREQUENCY_SHOWED)
             return true
         }
 
@@ -66,6 +71,7 @@ abstract class ApplicationRecyclerViewHolder(itemView: View) : RecyclerView.View
             val packageUri = Uri.parse("package:$packageName")
             val infoIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageUri)
             context.startActivity(infoIntent)
+            YandexMetrica.reportEvent(ReportEvents.INFO_SHOWED)
             return true
         }
     }

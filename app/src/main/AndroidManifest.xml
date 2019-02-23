@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.NavigationActivity"
+        <activity android:name=".ui.activity.navigation.NavigationActivity"
             android:theme="@style/AppTheme.TransparentStatusBar"
             android:launchMode="singleTask"
             android:configChanges="orientation|screenSize">
