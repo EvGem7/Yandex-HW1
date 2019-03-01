@@ -1,8 +1,7 @@
 package org.evgem.android.drachukeugenesapp.data
 
-import org.evgem.android.drachukeugenesapp.data.application.ApplicationObservable
-import org.evgem.android.drachukeugenesapp.data.application.ApplicationObserver
-import org.evgem.android.drachukeugenesapp.data.application.ApplicationRepository
+import org.evgem.android.drachukeugenesapp.data.observer.application.ApplicationObservable
+import org.evgem.android.drachukeugenesapp.data.observer.application.ApplicationObserver
 import org.evgem.android.drachukeugenesapp.data.database.dao.LaunchDao
 import org.evgem.android.drachukeugenesapp.data.database.AppDatabase
 import org.evgem.android.drachukeugenesapp.data.entity.Launch

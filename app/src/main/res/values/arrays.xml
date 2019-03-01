@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="showed_sort_type">
-        <item>A-Z</item>
-        <item>Z-A</item>
-        <item>by launches count</item>
-        <item>by date</item>
-        <item>no sort</item>
-    </string-array>
+
     <string-array name="sort_type">
         <item>a_z</item>
         <item>z_a</item>
@@ -14,4 +8,19 @@
         <item>date</item>
         <item>no_sort</item>
     </string-array>
+
+    <string-array name="background_image_sources">
+        <item>loremflickr</item>
+        <item>picsum</item>
+        <item>lorempixel</item>
+        <item>placeimg</item>
+    </string-array>
+
+    <string-array name="background_image_refresh_rate">
+        <item>900000</item>
+        <item>3600000</item>
+        <item>28800000</item>
+        <item>86400000</item>
+    </string-array>
+
 </resources>

@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
+import com.yandex.metrica.YandexMetrica
 import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
-import org.evgem.android.drachukeugenesapp.ui.activity.NavigationActivity
+import org.evgem.android.drachukeugenesapp.ui.activity.navigation.NavigationActivity
+import org.evgem.android.drachukeugenesapp.util.ReportEvents
 
 class WelcomeActivity : AppCompatActivity() {
     private var currentFragment = 0
@@ -19,6 +21,10 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (savedInstanceState == null) {
+            YandexMetrica.reportEvent(ReportEvents.WELCOME_ACTIVITY_STARTED)
+        }
 
         val isShowedOnce = intent.getBooleanExtra(EXTRA_SHOW_ONCE, false)
         if (AppConfig.isConfigured(this) && !isShowedOnce) {
@@ -53,7 +59,7 @@ class WelcomeActivity : AppCompatActivity() {
     }
     private fun startNavigationActivity() {
         val intent = Intent(this, NavigationActivity::class.java)
-            .putExtra(NavigationActivity.EXTRA_FRAGMENT_TYPE, NavigationActivity.GRID_FRAGMENT)
+            .putExtra(NavigationActivity.EXTRA_FRAGMENT_TYPE, NavigationActivity.DESKTOP_FRAGMENT)
         startActivity(intent)
         finish()
     }

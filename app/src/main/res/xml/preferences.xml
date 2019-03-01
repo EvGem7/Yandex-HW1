@@ -23,4 +23,27 @@
         android:key="favourite_switch"
         android:title="@string/favourites" />
 
+    <PreferenceCategory>
+        <MultiSelectListPreference
+            android:entries="@array/showed_background_image_sources"
+            android:entryValues="@array/background_image_sources"
+            android:key="background_image_source"
+            android:title="@string/settings_background_image_sources" />
+
+        <ListPreference
+            android:entries="@array/showed_background_image_refresh_rate"
+            android:entryValues="@array/background_image_refresh_rate"
+            android:key="background_image_refresh_rate"
+            android:title="@string/settings_background_image_refresh"/>
+
+        <Preference
+            android:key="background_image_update"
+            android:title="@string/settings_background_image_update"/>
+
+        <SwitchPreferenceCompat
+            android:key="background_image_unique"
+            android:title="@string/settings_background_image_unique"
+            android:summary="@string/settings_background_image_unique_summary"/>
+    </PreferenceCategory>
+
 </PreferenceScreen>

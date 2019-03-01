@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.data.FavouriteRepository
 import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
-import org.evgem.android.drachukeugenesapp.ui.fragment.grid.viewholder.FavouriteRecyclerViewHolder
+import org.evgem.android.drachukeugenesapp.ui.fragment.grid.viewholder.FavouriteViewHolder
 import java.lang.IllegalStateException
 
 class FavouriteRecyclerAdapter(private val count: Int, private val activity: AppCompatActivity) :
-    RecyclerView.Adapter<FavouriteRecyclerViewHolder>() {
-    var pendingActivityResultHolder: FavouriteRecyclerViewHolder? = null
+    RecyclerView.Adapter<FavouriteViewHolder>() {
+    var pendingActivityResultHolder: FavouriteViewHolder? = null
     var currentAddingFavourite: AppEntity? = null
     var newFavouriteAdding = false
         set(value) {
@@ -30,14 +30,14 @@ class FavouriteRecyclerAdapter(private val count: Int, private val activity: App
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(container: ViewGroup, type: Int): FavouriteRecyclerViewHolder {
+    override fun onCreateViewHolder(container: ViewGroup, type: Int): FavouriteViewHolder {
         val view = LayoutInflater.from(container.context).inflate(R.layout.item_launcher_grid, container, false)
-        return FavouriteRecyclerViewHolder(view, this, activity)
+        return FavouriteViewHolder(view, this, activity)
     }
 
     override fun getItemCount(): Int = count
 
-    override fun onBindViewHolder(holder: FavouriteRecyclerViewHolder, pos: Int) {
+    override fun onBindViewHolder(holder: FavouriteViewHolder, pos: Int) {
         holder.newFavouriteAdding = newFavouriteAdding
         holder.bind(FavouriteRepository[pos])
     }

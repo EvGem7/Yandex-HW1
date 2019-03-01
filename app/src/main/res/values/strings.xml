@@ -30,5 +30,16 @@
     <string name="remove_favourite">Remove from favourites</string>
     <string name="favourites">Favourites</string>
     <string name="frequency_action">Frequency</string>
+    <string name="desktop">Desktop</string>
+    <string name="add_app">Add application</string>
+    <string name="add_contact">Add contact</string>
+    <string name="add_site">Add site</string>
+    <string name="dialog_add_site">Type URL of the site</string>
+    <string name="cannot_launch">Cannot launch this :(</string>
+    <string name="settings_background_image_refresh">Background image refresh rate</string>
+    <string name="settings_background_image_sources">Background image sources</string>
+    <string name="settings_background_image_update">Update background image</string>
+    <string name="settings_background_image_unique">Unique background image</string>
+    <string name="settings_background_image_unique_summary">Background images on each screen will differ from each other</string>
 
 </resources>
