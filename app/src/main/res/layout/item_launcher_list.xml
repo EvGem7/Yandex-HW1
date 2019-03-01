@@ -8,5 +8,11 @@
     android:ellipsize="end"
     android:gravity="center_vertical"
     android:maxLines="2"
+    android:shadowColor="@android:color/black"
+    android:shadowDx="1"
+    android:shadowDy="1"
+    android:shadowRadius="2"
+    android:textColor="@android:color/white"
     android:textSize="@dimen/common_text"
+    android:textStyle="bold"
     tools:text="App Name" />

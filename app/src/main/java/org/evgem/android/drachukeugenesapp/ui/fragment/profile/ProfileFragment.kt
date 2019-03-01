@@ -12,9 +12,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import com.yandex.metrica.YandexMetrica
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.ui.base.LockableActivity
 import org.evgem.android.drachukeugenesapp.ui.custom.DividerItemDecoration
+import org.evgem.android.drachukeugenesapp.util.ReportEvents
 
 //TODO add offset between items
 //TODO fix bug: when we go to profile fragment from landscape orientation displayMetrics isn't updated
@@ -28,6 +30,13 @@ class ProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         (activity as? LockableActivity)?.orientationLocked = true
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) {
+            YandexMetrica.reportEvent(ReportEvents.PROFILE_FRAGMENT_STARTED)
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

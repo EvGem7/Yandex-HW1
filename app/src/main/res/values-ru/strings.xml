@@ -30,4 +30,15 @@
     <string name="add_favourite">Добавить в избранное</string>
     <string name="remove_favourite">Удалить из избранного</string>
     <string name="favourites">Избранное</string>
+    <string name="desktop">Рабочий стол</string>
+    <string name="add_app">Добавить приложение</string>
+    <string name="add_contact">Добавить контакт</string>
+    <string name="add_site">Добавить сайт</string>
+    <string name="dialog_add_site">Наберите URL сайта</string>
+    <string name="cannot_launch">Я не знаю как это запустить :(</string>
+    <string name="settings_background_image_refresh">Частота обновления фона</string>
+    <string name="settings_background_image_sources">Источники фоновых картинок</string>
+    <string name="settings_background_image_update">Обновить фон</string>
+    <string name="settings_background_image_unique">Уникальный фон</string>
+    <string name="settings_background_image_unique_summary">Фоновые картинки на каждом экране будут отличаться друг от друга</string>
 </resources>

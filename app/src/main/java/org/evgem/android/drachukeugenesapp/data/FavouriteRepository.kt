@@ -8,9 +8,8 @@ import android.net.Uri
 import android.support.v4.content.res.ResourcesCompat
 import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
-import org.evgem.android.drachukeugenesapp.data.application.ApplicationObservable
-import org.evgem.android.drachukeugenesapp.data.application.ApplicationObserver
-import org.evgem.android.drachukeugenesapp.data.application.ApplicationRepository
+import org.evgem.android.drachukeugenesapp.data.observer.application.ApplicationObservable
+import org.evgem.android.drachukeugenesapp.data.observer.application.ApplicationObserver
 import org.evgem.android.drachukeugenesapp.data.database.AppDatabase
 import org.evgem.android.drachukeugenesapp.data.database.dao.FavouriteDao
 import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
