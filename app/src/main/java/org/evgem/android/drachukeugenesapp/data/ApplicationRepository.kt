@@ -1,4 +1,4 @@
-package org.evgem.android.drachukeugenesapp.data.application
+package org.evgem.android.drachukeugenesapp.data
 
 import android.app.Application
 import android.content.pm.ApplicationInfo
@@ -9,7 +9,7 @@ import org.evgem.android.drachukeugenesapp.AppConfig
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.data.entity.AppEntity
 import org.evgem.android.drachukeugenesapp.data.entity.Launch
-import org.evgem.android.drachukeugenesapp.data.LaunchRepository
+import org.evgem.android.drachukeugenesapp.data.observer.application.ApplicationObservable
 import org.evgem.android.drachukeugenesapp.util.settingsSharedPreferences
 import org.evgem.android.drachukeugenesapp.util.toBitmap
 
@@ -46,7 +46,8 @@ object ApplicationRepository {
             return
         }
         preSortBlock = null
-        sortType = azSort
+        sortType =
+            azSort
         sort()
     }
 
@@ -55,7 +56,8 @@ object ApplicationRepository {
             return
         }
         preSortBlock = null
-        sortType = zaSort
+        sortType =
+            zaSort
         sort()
     }
 
@@ -64,14 +66,16 @@ object ApplicationRepository {
             return
         }
         preSortBlock = null
-        sortType = dateSort
+        sortType =
+            dateSort
         sort()
     }
 
     val sortedByLaunches get() = sortType == launchSort
 
     fun sortByLaunchCount() {
-        sortType = launchSort
+        sortType =
+            launchSort
         preSortBlock = this::updateLaunches
         sort()
     }
@@ -150,7 +154,9 @@ object ApplicationRepository {
     }
 
     fun getIcon(drawable: Drawable): Drawable {
-        val bitmap = Bitmap.createScaledBitmap(drawable.toBitmap(), iconSize, iconSize, true)
+        val bitmap = Bitmap.createScaledBitmap(drawable.toBitmap(),
+            iconSize,
+            iconSize, true)
         bitmap.density = application.resources.displayMetrics.densityDpi
         return BitmapDrawable(application.resources, bitmap)
     }

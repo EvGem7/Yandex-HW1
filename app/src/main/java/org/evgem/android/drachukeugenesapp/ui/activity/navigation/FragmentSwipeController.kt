@@ -11,7 +11,15 @@ class FragmentSwipeController(private val activity: NavigationActivity?) {
     fun onSetFragment(fragmentType: Int) {
         Log.d(TAG, "onSetFragment")
         val index = fragments.indexOf(fragmentType)
+        if (index == -1) {
+            return
+        }
         gestureDetector = GestureDetectorCompat(activity, getOnGestureDetectorListener(index))
+
+        activity?.fragmentContainer?.onInterceptTouchEventListener = { event ->
+            Log.i(TAG, "onTouchListener, event: $event")
+            gestureDetector.onTouchEvent(event)
+        }
     }
 
     private fun getOnGestureDetectorListener(index: Int): OnSwipeGestureListener = when (index) {
@@ -43,6 +51,10 @@ class FragmentSwipeController(private val activity: NavigationActivity?) {
     }
 
     companion object {
-        private val fragments = listOf(NavigationActivity.GRID_FRAGMENT, NavigationActivity.LIST_FRAGMENT)
+        private val fragments = listOf(
+            NavigationActivity.DESKTOP_FRAGMENT,
+            NavigationActivity.GRID_FRAGMENT,
+            NavigationActivity.LIST_FRAGMENT
+        )
     }
 }

@@ -59,7 +59,7 @@ class WelcomeActivity : AppCompatActivity() {
     }
     private fun startNavigationActivity() {
         val intent = Intent(this, NavigationActivity::class.java)
-            .putExtra(NavigationActivity.EXTRA_FRAGMENT_TYPE, NavigationActivity.GRID_FRAGMENT)
+            .putExtra(NavigationActivity.EXTRA_FRAGMENT_TYPE, NavigationActivity.DESKTOP_FRAGMENT)
         startActivity(intent)
         finish()
     }

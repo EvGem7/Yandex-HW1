@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable
 import java.lang.IllegalStateException
 
 data class AppEntity(
-    val icon: Drawable?,
+    var icon: Drawable?,
     val name: CharSequence,
     val launchIntent: Intent,
     val date: Long,

@@ -14,4 +14,5 @@
     <dimen name="profile_app_bar_height">240dp</dimen>
     <dimen name="divider_offset">56dp</dimen>
     <dimen name="divider_margins">8dp</dimen>
+    <dimen name="row_height">84dp</dimen>
 </resources>

@@ -1,4 +1,4 @@
-package org.evgem.android.drachukeugenesapp.data.application
+package org.evgem.android.drachukeugenesapp.data.observer.application
 
 object ApplicationObservable : ApplicationObserver {
     private val observers = ArrayList<ApplicationObserver>()

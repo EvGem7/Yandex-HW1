@@ -1,11 +1,13 @@
 package org.evgem.android.drachukeugenesapp.ui.custom
 
+import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import kotlin.math.abs
 
 abstract class OnSwipeGestureListener : GestureDetector.SimpleOnGestureListener() {
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+        Log.i("OnSwipeGestureListener", "onFling, velocityX: $velocityX, velocityY: $velocityY")
         if (abs(velocityX) < VELOCITY_THRESHOLD && abs(velocityY) < VELOCITY_THRESHOLD) {
             return false
         }

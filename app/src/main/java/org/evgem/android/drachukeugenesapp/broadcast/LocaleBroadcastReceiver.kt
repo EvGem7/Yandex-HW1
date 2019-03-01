@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import org.evgem.android.drachukeugenesapp.data.application.ApplicationRepository
+import org.evgem.android.drachukeugenesapp.data.ApplicationRepository
 
 class LocaleBroadcastReceiver : BroadcastReceiver() {
     val intentFilter = IntentFilter().apply {
