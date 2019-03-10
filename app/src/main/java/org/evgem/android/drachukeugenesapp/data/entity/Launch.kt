@@ -11,5 +11,8 @@ data class Launch(
     var packageName: String,
 
     @ColumnInfo(name = "launch_count")
-    var launchCount: Int
+    var launchCount: Int,
+
+    @ColumnInfo(name = "last_launched")
+    var lastLaunched: Long? = null
 )
