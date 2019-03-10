@@ -19,11 +19,13 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         lateinit var INSTANCE: AppDatabase
+        var initialized = false
 
         fun init(context: Context) {
             INSTANCE = Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build()
+            initialized = true
         }
 
         private const val DATABASE_NAME = "database"
