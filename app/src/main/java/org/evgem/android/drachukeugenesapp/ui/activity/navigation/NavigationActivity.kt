@@ -3,6 +3,8 @@ package org.evgem.android.drachukeugenesapp.ui.activity.navigation
 import android.Manifest
 import android.Manifest.permission.*
 import android.app.Activity
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.*
@@ -12,11 +14,13 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.support.v4.app.NotificationCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.yandex.metrica.YandexMetrica
+import com.yandex.metrica.push.YandexMetricaPush
 import de.hdodenhof.circleimageview.CircleImageView
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.broadcast.LocaleBroadcastReceiver
@@ -89,6 +93,7 @@ class NavigationActivity : AppCompatActivity(), LockableActivity, AppProvider {
                 R.id.menu_desktop -> setFragment(DESKTOP_FRAGMENT)
                 R.id.menu_list -> setFragment(LIST_FRAGMENT)
                 R.id.menu_settings -> setFragment(SETTINGS_FRAGMENT)
+                R.id.menu_notification -> sendNotification()
             }
 
             return@setNavigationItemSelectedListener true
@@ -118,6 +123,26 @@ class NavigationActivity : AppCompatActivity(), LockableActivity, AppProvider {
                 }
             }
         }
+    }
+
+    private fun sendNotification() {
+        val notification = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            YandexMetricaPush.getDefaultNotificationChannel()?.let {
+                NotificationCompat.Builder(this, it.id)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setContentTitle("Notification title!")
+                    .setContentText("Notification text!")
+                    .build()
+            }
+        } else {
+            NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Notification title!")
+                .setContentText("Notification text!")
+                .build()
+        }
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(NOTIFICATION_ID, notification)
     }
 
     private fun performTransaction(fragment: Fragment, addToBackStack: Boolean = false) {
@@ -240,5 +265,7 @@ class NavigationActivity : AppCompatActivity(), LockableActivity, AppProvider {
         const val SETTINGS_FRAGMENT = 3
         const val PROFILE_FRAGMENT = 4
         const val DESKTOP_FRAGMENT = 5
+
+        private const val NOTIFICATION_ID = 1
     }
 }
