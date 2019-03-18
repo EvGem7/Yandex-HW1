@@ -27,23 +27,25 @@ class FavouriteViewHolder(
     override fun bind(app: AppEntity?) {
         if (app == null) {
             val view = itemView as TextView
-            view.text = view.resources.getText(R.string.no_app)
-            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
-            view.setOnClickListener {
-                val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
-                activity.startActivityForResult(intent, GridLauncherFragment.CONTACT_REQUEST_CODE)
-                adapter.pendingActivityResultHolder = this
-            }
             if (newFavouriteAdding) {
                 var addIcon = ResourcesCompat.getDrawable(view.resources, R.drawable.ic_add, null)
                     ?: throw Resources.NotFoundException("cannot find add icon")
                 addIcon = ApplicationRepository.getIcon(addIcon)
                 view.setCompoundDrawablesWithIntrinsicBounds(null, addIcon, null, null)
+                view.text = null
                 view.setOnClickListener {
                     super.bind(adapter.currentAddingFavourite)
                     FavouriteRepository[adapterPosition] = adapter.currentAddingFavourite
                     adapter.newFavouriteAdding = false
                     YandexMetrica.reportEvent(ReportEvents.ADDED_TO_FAVOURITES)
+                }
+            } else {
+                view.text = view.resources.getText(R.string.no_app)
+                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                view.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+                    activity.startActivityForResult(intent, GridLauncherFragment.CONTACT_REQUEST_CODE)
+                    adapter.pendingActivityResultHolder = this
                 }
             }
         } else {

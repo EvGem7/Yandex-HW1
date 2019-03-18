@@ -1,5 +1,6 @@
 package org.evgem.android.drachukeugenesapp.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
@@ -18,6 +19,7 @@ import org.evgem.android.drachukeugenesapp.AppConfig.Theme.DARK
 import org.evgem.android.drachukeugenesapp.AppConfig.Theme.LIGHT
 import org.evgem.android.drachukeugenesapp.R
 import org.evgem.android.drachukeugenesapp.data.network.LoadBackgroundImageAsyncTask
+import org.evgem.android.drachukeugenesapp.ui.activity.navigation.NavigationActivity
 import org.evgem.android.drachukeugenesapp.util.ReportEvents
 
 class SettingsFragment : PreferenceFragmentCompat() {
@@ -70,7 +72,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
         darkThemeSwitch.setOnPreferenceClickListener {
             val theme = if (darkThemeSwitch.isChecked) DARK else LIGHT
             AppConfig.setTheme(theme, context)
-            activity?.recreate()
+            activity?.finish()
+            activity?.startActivity(
+                Intent(context, NavigationActivity::class.java).apply {
+                    putExtra(NavigationActivity.EXTRA_FRAGMENT_TYPE, NavigationActivity.SETTINGS_FRAGMENT)
+                }
+            )
             YandexMetrica.reportEvent(ReportEvents.THEME_CHANGED)
             return@setOnPreferenceClickListener true
         }

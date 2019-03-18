@@ -11,6 +11,7 @@ import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import com.yandex.metrica.YandexMetrica
 import com.yandex.metrica.YandexMetricaConfig
+import com.yandex.metrica.push.YandexMetricaPush
 import io.fabric.sdk.android.Fabric
 import org.evgem.android.drachukeugenesapp.data.ContactRepository
 import org.evgem.android.drachukeugenesapp.data.DesktopRepository
@@ -45,6 +46,7 @@ class App : Application() {
         val config = YandexMetricaConfig.newConfigBuilder("46e901e6-a1c1-441e-9819-01f741876373").build()
         YandexMetrica.activate(this, config)
         YandexMetrica.enableActivityAutoTracking(this)
+        YandexMetricaPush.init(applicationContext)
     }
 
     fun scheduleBackgroundImageJob(period: Long = AppConfig.getBackgroundImageUpdatePeriod(this)) {
