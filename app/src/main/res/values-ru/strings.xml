@@ -41,4 +41,5 @@
     <string name="settings_background_image_update">Обновить фон</string>
     <string name="settings_background_image_unique">Уникальный фон</string>
     <string name="settings_background_image_unique_summary">Фоновые картинки на каждом экране будут отличаться друг от друга</string>
+    <string name="send_notification">Отправить оповещение</string>
 </resources>

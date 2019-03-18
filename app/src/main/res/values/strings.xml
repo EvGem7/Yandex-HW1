@@ -41,5 +41,6 @@
     <string name="settings_background_image_update">Update background image</string>
     <string name="settings_background_image_unique">Unique background image</string>
     <string name="settings_background_image_unique_summary">Background images on each screen will differ from each other</string>
+    <string name="send_notification">Send notification</string>
 
 </resources>
